@@ -15,8 +15,16 @@
 </head>
 
 <body>
+    <!-- //load jquery and navbar -->
     <div id="nav-placeholder">
     </div>
+    <script src="/js/libs/jquery.min.js"></script>
+    <script>
+        $(function() {
+            $("#nav-placeholder").load("/nav.html");
+        });
+    </script>
+
 
 
     <div class="container" id="main">
@@ -32,16 +40,20 @@
     </div>
 
     <script>
-        window.jQuery || document.write('<script src="/js/libs/jquery.min.js"><\/script>')
+        function continueToExternal(url) {
+            var conf = confirm("Now leaving riordanpawley.com");
+            if (conf) {
+                window.location.href = url;
+                document.body.style.cursor = "wait";
+            }
+        }
     </script>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="/js/libs/bootstrap.min.js"></script>
 
-    <script>
-        $(function() {
-            $("#nav-placeholder").load("/nav.html");
-        });
-    </script>
+
 </body>
 
 </html>
