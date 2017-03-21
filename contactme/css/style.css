@@ -1,0 +1,15 @@
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+ul.d {
+    list-style-type: square;
+}
+
+body {
+    margin-top: 55px;
+}

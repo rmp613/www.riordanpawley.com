@@ -9,27 +9,35 @@
 
     <title>Portfolio of Riordan Pawley</title>
 
-    <link href="/www.riordanpawley.com/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="/www.riordanpawley.com/css/style.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 </head>
 
 <body>
     <div id="nav-placeholder">
     </div>
+    <div class="container-fluid" id="main">
 
-
-    <div class="container" id="main">
-        <p>
-            This is a game which my group and I created in my final game design subject at university.
-            <br> We worked on it over the course of a semester (about 11 weeks) and presented it to our class, teachers, and a few guests from War Gaming.
-            <br> My part in the project was almost entirely programming. I worked on the networking,
-        </p>
-        <img src="/img/crystal-guard/tutorial.png"></img>
-        <img src="/img/crystal-guard/astargrid.png"></img>
-        <img src="/img/crystal-guard/towerplacement.png"></img>
-        <img src="/img/crystal-guard/astartowers.png"></img>
+        <div class="jumbotron">
+            <h1 class="display-4">Contact Options</h1>
+            <p class="lead">Email: rmp613@gmail.com</p>
+            <p class="lead">Phone: 0466841714</p>
+            <p>
+                <a class="btn btn-lg btn-success" href="https://au.linkedin.com/in/riordan-pawley-31658199" role="button">LinkedIn</a>
+            </p>
+        </div>
     </div>
+
+    <script>
+        function continueToExternal(url) {
+            var conf = confirm("Now leaving riordanpawley.com");
+            if (conf) {
+                window.location.href = url;
+                document.body.style.cursor = "wait";
+            }
+        }
+    </script>
 
     <script>
         window.jQuery || document.write('<script src="/js/libs/jquery.min.js"><\/script>')
