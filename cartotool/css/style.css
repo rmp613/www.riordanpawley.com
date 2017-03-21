@@ -1,0 +1,150 @@
+body.wait,
+body.wait * {
+    cursor: wait !important;
+}
+
+body.default,
+body.default * {
+    cursor: default !important;
+}
+
+#currenttool {
+    float: right;
+}
+
+div {
+    border-width: 1px;
+}
+
+#menubar {
+    border-style: inset;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#toggleinfotypes {
+    text-align: left;
+    position: relative;
+}
+
+#infotypes {
+    margin-left: 20%;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    background-color: #333;
+    overflow: auto;
+    transition: 0.5s;
+}
+
+li:hover {
+    background-color: #222;
+    cursor: default;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#map {
+    position: relative;
+    margin-top: 0;
+    height: 100%;
+}
+
+.info1 li {
+    overflow: hidden;
+    float: left;
+    text-align: left;
+    width: 100%;
+    text-decoration: none;
+    color: white;
+}
+
+#main {
+    width: 100%;
+    height: 100%;
+    transition: margin-left 0.5s;
+}
+
+.info1 {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    overflow: auto;
+    transition: 0.5s;
+}
+
+div label input {
+    margin-right: 100px;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.ck-button {
+    max-height: 46px;
+    border-style: inset;
+    border-width: 1px;
+    color: white;
+    background-color: #333;
+    overflow: hidden;
+    float: left;
+}
+
+.ck-button:hover {
+    background-color: #222;
+}
+
+.ck-button,
+.ck-button label span {
+    float: left;
+    width: 100%;
+}
+
+.ck-button label span {
+    text-align: center;
+    display: block;
+    padding: 14px 0px;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.ck-button label input {
+    position: absolute;
+    top: -20px;
+}
+
+.ck-button input:checked+span {
+    background-color: #111;
+}
+
+.ck-button:hover input:checked+span {
+    background-color: #000;
+}

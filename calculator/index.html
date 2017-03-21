@@ -1,0 +1,68 @@
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="The portfolio website of Riordan Pawley">
+<meta name="author" content="Riordan Pawley">
+
+<title>Portfolio of Riordan Pawley</title>
+
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<link href="css/style.css" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top" id="navbar">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Work</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="/calculator">Calculator</a>
+                        <a class="dropdown-item" href="/crystalguard">Crystal Guard</a>
+                        <a class="dropdown-item" href="http://www.mapstrategies.com.au/dev/riordan">CartoDB Map Tool</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contactme">Contact Me</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" style="float:right;">
+                <li>
+                    <a class="nav-link" href="https://github.com/rmp613/portfolio">Github</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid" id="main">
+        <p>This is a simple calculator that I created in C# a while back and then converted to javascript to learn requirejs.</p>
+        <p>While not fully functional as a calculator it demonstrates object oriented javascript. I would polish the calculate: give it a gui, fix its functionality problems etc; however, there is a javascript function "eval()" which I would also use if
+            I were polishing. Using eval() would reduce the size of the project by a large factor and mostly eliminate the need for multiple classes and therefore requirejs</p>
+        <p>You can find the source-code in Github</p>
+        <input type="text" name="input" id="input" value="3+3">
+        <button type="button" id="calculate">
+            <label>Calculate
+            </label>
+        </button>
+
+    </div>
+
+
+    <script data-main="js/app" src="js/libs/require.js"></script>
+</body>
+
+</html>
