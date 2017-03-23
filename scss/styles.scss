@@ -655,7 +655,7 @@ footer {
         margin: 7px;
         padding: 5px 10px;
         color: $heading;
-        background: darken($background-alt, 5%);
+        background: lighten($background-alt, 5%);
         list-style: none;
         cursor: default;
         border-radius: 3px;
