@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="The portfolio website of Riordan Pawley">
+    <meta name="author" content="Riordan Pawley">
+
+    <title>Portfolio of Riordan Pawley</title>
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- //load jquery and navbar -->
+    <div id="nav-placeholder">
+    </div>
+    <script src="/js/libs/jquery.min.js"></script>
+    <script>
+        $("#nav-placeholder").load("/nav.html");
+    </script>
+
+
+
+    <div class="container-fluid" id="main">
+
+        <div class="jumbotron">
+            <h1 class="display-2">Welcome to my portfolio website!</h1>
+            <p class="lead">On this site you can learn a little about me, see webapps I have created, look at pictures of games I have helped develop, and find my Github page for sourcecode.</p>
+        </div>
+        <div class="jumbotron" id="aboutme">
+            <div class="row">
+                <div class="col-md-4">
+                    <h1 class="display-4">Things I have used</h1>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <ul class="d"> <span class="lead">Languages:</span>
+                                <li>Java</li>
+                                <li>Javascript</li>
+                                <li>C#</li>
+                                <li>C++</li>
+                                <li>HTML</li>
+                                <li>CSS</li>
+                                <li>SQL</li>
+                                <li>Git</li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <ul class="d"> <span class="lead">Software:</span>
+                                <li>Eclipse</li>
+                                <li>Unity</li>
+                                <li>Visual Studio</li>
+                                <li>Visual Studio Code</li>
+                                <li>Android Studio</li>
+                                <li>Source Tree</li>
+                                <li>PostGIS</li>
+                            </ul>
+                        </div>
+                        <div class="wc-100">
+                        </div>
+                        <div class="col-sm-6">
+                            <ul class="d"> <span class="lead">Javascript libs:</span>
+                                <li>NodeJS</li>
+                                <li>RequireJS</li>
+                                <li>Bootstrap</li>
+                                <li>CartoJS</li>
+                                <li>ArcGIS API for JavaScript</li>
+                                <li>jQuery</li>
+                                <li>Leaflet</li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <ul class="d"> <span class="lead">Most confident in:</span>
+                                <li>Javascript</li>
+                                <li>HTML</li>
+                                <li>C#</li>
+                                <li>Java</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-7">
+                    <img src="/img/treecutlong.jpg" class="img-fluid">
+                    <h2 class="display-4">A little about me</h2>
+                    <p class="lead">I am an aspiring programmer with my sights set on being either a Web Developer or a Software Engineer.</p>
+                    <div>
+                        <p>When I finished high school in 2012 I had no idea what I wanted to be or what I wanted to do, I only knew I wanted to get on with it. After trying out a programming fundamentals elective in my first year of university I had found
+                            my calling. I transferred into a Games Development course ('cause what could be cooler?), and now here I am! With only one subject left in my Games Dev course at <abbr title="University ofTechnology Sydney">UTS</abbr> I currently
+                            have lots of time on my hands which I am using to develop this portfolio and look for work.
+                        </p>
+                        <p>I really enjoy programming. I enjoy solving puzzles, experiementing, and working within systems which require precision and make sense.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function continueToExternal(url) {
+            var conf = confirm("Now leaving riordanpawley.com");
+            if (conf) {
+                window.location.href = url;
+                document.body.style.cursor = "wait";
+            }
+        }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="/js/libs/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>

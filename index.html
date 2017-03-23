@@ -1,123 +1,261 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en">
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="The portfolio website of Riordan Pawley">
-    <meta name="author" content="Riordan Pawley">
-
-    <title>Portfolio of Riordan Pawley</title>
-
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-
-    <link href="/css/style.css" rel="stylesheet">
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Portfolio</title>
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:300,400,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
 </head>
 
 <body>
-    <!-- //load jquery and navbar -->
-    <div id="nav-placeholder">
+    <div id="mobile-menu-open" class="shadow-large">
+        <i class="fa fa-bars" aria-hidden="true"></i>
     </div>
-    <script src="/js/libs/jquery.min.js"></script>
-    <script>
-        $("#nav-placeholder").load("/nav.html");
-    </script>
-
-
-
-    <div class="container-fluid" id="main">
-
-        <div class="jumbotron">
-            <h1 class="display-2">Welcome to my portfolio website!</h1>
-            <p class="lead">On this site you can learn a little about me, see webapps I have created, look at pictures of games I have helped develop, and find my Github page for sourcecode.</p>
+    <!-- End #mobile-menu-toggle -->
+    <header>
+        <div id="mobile-menu-close">
+            <span>Close</span> <i class="fa fa-times" aria-hidden="true"></i>
         </div>
-        <div class="jumbotron" id="aboutme">
+        <ul id="menu" class="shadow">
+            <li>
+                <a href="#about">About</a>
+            </li>
+            <li>
+                <a href="#skills">Skills</a>
+            </li>
+            <li>
+                <a href="#projects">Projects</a>
+            </li>
+            <li>
+                <a href="#experience">Experience</a>
+            </li>
+            <li>
+                <a href="#education">Education</a>
+            </li>
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+        </ul>
+    </header>
+    <!-- End header -->
+
+    <div id="lead">
+        <div id="lead-content">
+            <h1>Riordan Pawley</h1>
+            <h2>Web Developer</h2>
+            <a href="/resume.pdf" class="btn-rounded-white" download="resume-of-riordan-pawley.pdf">Download Resume</a>
+        </div>
+        <!-- End #lead-content -->
+
+        <div id="lead-overlay"></div>
+
+        <div id="lead-down">
+            <span>
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </span>
+        </div>
+        <!-- End #lead-down -->
+    </div>
+    <!-- End #lead -->
+
+    <div id="about">
+        <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h1 class="display-4">Things I have used</h1>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <ul class="d"> <span class="lead">Languages:</span>
-                                <li>Java</li>
-                                <li>Javascript</li>
-                                <li>C#</li>
-                                <li>C++</li>
-                                <li>HTML</li>
-                                <li>CSS</li>
-                                <li>SQL</li>
-                                <li>Git</li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6">
-                            <ul class="d"> <span class="lead">Software:</span>
-                                <li>Eclipse</li>
-                                <li>Unity</li>
-                                <li>Visual Studio</li>
-                                <li>Visual Studio Code</li>
-                                <li>Android Studio</li>
-                                <li>Source Tree</li>
-                                <li>PostGIS</li>
-                            </ul>
-                        </div>
-                        <div class="wc-100">
-                        </div>
-                        <div class="col-sm-6">
-                            <ul class="d"> <span class="lead">Javascript libs:</span>
-                                <li>NodeJS</li>
-                                <li>RequireJS</li>
-                                <li>Bootstrap</li>
-                                <li>CartoJS</li>
-                                <li>ArcGIS API for JavaScript</li>
-                                <li>jQuery</li>
-                                <li>Leaflet</li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6">
-                            <ul class="d"> <span class="lead">Most confident in:</span>
-                                <li>Javascript</li>
-                                <li>HTML</li>
-                                <li>C#</li>
-                                <li>Java</li>
-                            </ul>
-                        </div>
-
-                    </div>
-
+                    <h2 class="heading">About Me</h2>
                 </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-7">
-                    <img src="/img/treecutlong.jpg" class="img-fluid">
-                    <h2 class="display-4">A little about me</h2>
-                    <p class="lead">I am an aspiring programmer with my sights set on being either a Web Developer or a Software Engineer.</p>
-                    <div>
-                        <p>When I finished high school in 2012 I had no idea what I wanted to be or what I wanted to do, I only knew I wanted to get on with it. After trying out a programming fundamentals elective in my first year of university I had found
-                            my calling. I transferred into a Games Development course ('cause what could be cooler?), and now here I am! With only one subject left in my Games Dev course at <abbr title="University ofTechnology Sydney">UTS</abbr> I currently
-                            have lots of time on my hands which I am using to develop this portfolio and look for work.
-                        </p>
-                        <p>I really enjoy programming. I enjoy solving puzzles, experiementing, and working within systems which require precision and make sense.
-                        </p>
-                    </div>
+                <div class="col-md-8">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat. Donec
+                        eu vehicula neque. Donec viverra lorem nunc, tempus euismod eros sollicitudin ut. Quisque et tincidunt libero. Donec id pharetra justo. Proin euismod lacinia dolor, eu scelerisque justo tempus pharetra. Vivamus nunc justo, finibus
+                        ut nisl sed, euismod rhoncus nulla. Proin sed magna egestas, egestas ante et, congue eros. In consequat, mauris dapibus tincidunt suscipit, ex libero aliquet diam, at maximus risus enim non leo.
+                    </p>
                 </div>
             </div>
         </div>
     </div>
+    <!-- End #about -->
+
+    <div id="skills">
+        <h2 class="heading">Skills</h2>
+        <ul>
+            <li>JavaScript</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>jQuery</li>
+            <li>Node.js</li>
+            <li>C#</li>
+            <li>Leaflet.js</li>
+            <li>SQL</li>
+            <li>Git</li>
+            <li>Java</li>
+            <li>Bootstrap</li>
+        </ul>
+    </div>
+    <!-- End #skills -->
+
+    <div id="projects" class="background-alt">
+        <h2 class="heading">Projects</h2>
+        <div class="container">
+            <div class="row">
+                <div class="project shadow-large">
+                    <div class="project-image">
+                        <img src="images/project.jpg" />
+                    </div>
+                    <!-- End .project-image -->
+                    <div class="project-info">
+                        <h3>Project Name Here</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat.
+                        </p>
+                        <a href="#">View Project</a>
+                    </div>
+                    <!-- End .project-info -->
+                </div>
+                <!-- End .project -->
+
+                <div class="project shadow-large">
+                    <div class="project-image">
+                        <img src="images/project.jpg" />
+                    </div>
+                    <!-- End .project-image -->
+                    <div class="project-info">
+                        <h3>Project Name Here</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat.
+                        </p>
+                        <a href="#">View Project</a>
+                    </div>
+                    <!-- End .project-info -->
+                </div>
+                <!-- End .project -->
+            </div>
+        </div>
+    </div>
+    <!-- End #projects -->
+
+    <div id="experience" class="background-alt">
+        <h2 class="heading">Experience</h2>
+        <div id="experience-timeline">
+            <div data-date="September 2015 – September 2016">
+                <h3>Employer Name</h3>
+                <h4>Job Title</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat.
+                </p>
+            </div>
+
+            <div data-date="September 2015 – September 2016">
+                <h3>Employer Name</h3>
+                <h4>Job Title</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat.
+                </p>
+            </div>
+
+            <div data-date="September 2015 – September 2016">
+                <h3>Employer Name</h3>
+                <h4>Job Title</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- End #experience -->
+
+    <div id="education">
+        <h2 class="heading">Education</h2>
+        <div class="education-block">
+            <h3>University of Ottawa</h3>
+            <span class="education-date">Sept 2016 - Sept 2017</span>
+            <h4>Bachelor of Science in Computer Science</h4>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat.
+            </p>
+        </div>
+        <!-- End .education-block -->
+
+        <div class="education-block">
+            <h3>University of Ottawa</h3>
+            <span class="education-date">Sept 2016 - Sept 2017</span>
+            <h4>Bachelor of Science in Computer Science</h4>
+            <ul>
+                <li>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </li>
+                <li>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </li>
+                <li>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </li>
+            </ul>
+        </div>
+        <!-- End .education-block -->
+    </div>
+    <!-- End #education -->
 
 
-    <script>
-        function continueToExternal(url) {
-            var conf = confirm("Now leaving riordanpawley.com");
-            if (conf) {
-                window.location.href = url;
-                document.body.style.cursor = "wait";
-            }
-        }
-    </script>
+    <div id="contact">
+        <h2>Get in Touch</h2>
+        <div id="contact-form">
+            <form method="POST" action="https://formspree.io/email@email.com">
+                <input type="hidden" name="_subject" value="Contact request from personal website" />
+                <input type="email" name="_replyto" placeholder="Your email" required>
+                <textarea name="message" placeholder="Your message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+        <!-- End #contact-form -->
+    </div>
+    <!-- End #contact -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="/js/libs/bootstrap.min.js"></script>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5 copyright">
+                    <p>
+                        Copyright &copy; 2017 YOUR NAME
+                    </p>
+                </div>
+                <div class="col-sm-2 top">
+                    <span id="to-top">
+                        <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="col-sm-5 social">
+                    <ul>
+                        <li>
+                            <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-stack-overflow" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End footer -->
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/scripts.min.js"></script>
 </body>
 
 </html>
