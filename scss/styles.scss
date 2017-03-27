@@ -39,7 +39,7 @@
 $base-color: #ffa500;
 $base-color-hover: darken($base-color, 10%);
 // Define background colors
-$background: #696969;
+$background: #f2f2f5;
 $background-alt: #f2f2f5;
 // Define border colors
 $border: #FFF;
@@ -241,6 +241,9 @@ footer {
     }
     i {
         color: $text;
+        animation: pulsate 2.0s ease;
+        animation-iteration-count: infinite;
+        padding-top: 5px;
     }
 }
 
@@ -323,7 +326,7 @@ footer {
     height: 100vh;
     min-height: 500px;
     max-height: 1080px;
-    background: url(../images/lead-bg.jpg);
+    background: url(../images/pexels/lead-bg.jpeg);
     background-size: cover;
     padding: 15px;
     overflow: hidden;
@@ -391,19 +394,18 @@ footer {
         animation: pulsate 3.0s ease;
         animation-iteration-count: infinite;
         padding-top: 5px;
-        ;
     }
 }
 
 @keyframes pulsate {
     0% {
-        transform: scale(1, 1) translate(0, -2px);
+        transform: scale(1, 1) translate(0, -1px);
     }
     50% {
-        transform: scale(1.2, 1.2) translate(0, 2px);
+        transform: scale(1.15, 1.15) translate(0, 1px);
     }
     100% {
-        transform: scale(1, 1) translate(0, -2px);
+        transform: scale(1, 1) translate(0, -1px);
     }
 }
 
@@ -556,28 +558,36 @@ footer {
     text-align: left;
     h3 {
         font-weight: 500;
-        float: left;
         margin: 0;
         color: $heading;
+        float: left;
     }
     span {
         color: $text;
         float: right;
+    }
+    span .education-status {
+        float: right;
+        font-size: 0.9em;
     }
     h4 {
         color: $text;
         clear: both;
         font-weight: 500;
         margin: 0 0 15px 0;
+        float: left;
     }
     p,
     ul {
         margin: 0;
         color: $text;
         font-size: 0.9em;
+        clear: both;
     }
     ul {
         padding: 0 0 0 15px;
+        margin-left: 0px;
+        clear: both;
     }
 }
 
@@ -617,6 +627,7 @@ footer {
     transform: translateY(-50%);
     margin-left: 300px;
     padding: 15px;
+    text-align: left;
     h3 {
         font-size: 1.5em;
         font-weight: 300;
