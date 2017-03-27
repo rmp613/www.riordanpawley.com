@@ -619,15 +619,7 @@ footer {
     padding: 50px 15px;
     border-bottom: 1px solid $border;
     text-align: center;
-    h2 {
-        color: $heading;
-        margin-bottom: 50px;
-    }
-}
-
-#projects {
-    padding: 50px 15px;
-    border-bottom: 1px solid $border;
+    display: block;
     h2 {
         color: $heading;
         margin-bottom: 50px;
@@ -654,7 +646,6 @@ footer {
     transform: translateY(-50%);
     margin-left: 300px;
     padding: 15px;
-    z-index: 1001;
     h3 {
         font-size: 1.5em;
         font-weight: 300;
