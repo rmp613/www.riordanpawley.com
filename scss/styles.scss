@@ -299,7 +299,6 @@ footer {
 
 .btn-top-right {
     position: absolute;
-    // left: 300px;
     right: 0px;
     top: 0;
 }
@@ -309,6 +308,7 @@ footer {
     color: $base-color;
     padding: 5px 10px;
     margin-top: 5px;
+    margin-bottom: 5px;
     background: none;
     border: 3px solid $base-color;
     border-radius: 10px;
@@ -891,7 +891,9 @@ footer {
         display: block;
     }
     #menu {
+        color: $base-color;
         height: 100%;
+        background: rgba($base-color, 5%);
         overflow-y: auto;
         box-shadow: none;
         border-radius: 0;
@@ -900,6 +902,9 @@ footer {
             display: block;
             margin-bottom: 10px;
         }
+    }
+    .btn-rounded-orange {
+        position: relative;
     }
     #lead-content {
         h1 {
