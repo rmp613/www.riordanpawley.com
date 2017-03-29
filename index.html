@@ -9,7 +9,9 @@
     <link href="https://fonts.googleapis.com/css?family=Droid+Sans:300,400,700,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <link href="css/styles.css" rel="stylesheet">
 </head>
 
@@ -106,37 +108,128 @@
             <div class="row">
                 <div class="project shadow-large">
                     <div class="project-image">
-                        <img src="images/crystal-guard/project.png" />
+                        <a href="images/crystal-guard/tutorial.png" data-gallery="crystal" data-toggle="lightbox">
+                            <img class="rounded img-fluid" src="images/crystal-guard/project.png" width="300" height="300">
+                        </a>
                     </div>
                     <!-- End .project-image -->
                     <div class="project-info">
                         <h3>The Crystal Guard</h3>
                         <p>This is a game which my group and I created in my final game design subject at university. We worked on it over the course of a semester (about 11 weeks) and presented it to our class, teachers, and a few guests from War Gaming.
                             The Crystal Guard is a multiplayer, fps, tower-defence computer game. We chose this genre mashup in an attempt to create something new that we would enjoy playing. We made a <a href="#tutorial">tutorial</a> for the game so
-                            that players could begin playing without our guidance. I worked on the networking,
-                            <a href="#pathfinding-and-grid">the grid for pathfinding and tower placement</a>,
-                            <a href="#responsive-pathfinding">enemy AI</a>, and <a href="#responsive-pathfinding">tower placement</a>.</p>
-                        <a href="crystal-guard">View Project</a>
+                            that players could begin playing without our guidance. I worked on the networking, <a href="#pathfinding-and-grid">the grid for pathfinding and tower placement</a>, <a href="#responsive-pathfinding">enemy AI</a>, and <a href="#responsive-pathfinding">tower placement</a>.</p>
                     </div>
+                    <div class="btn-rounded-orange btn-project-toggle " id="view-project">View Project</div>
                     <!-- End .project-info -->
-                </div>
-                <!-- End .project -->
-
-                <div class="project shadow-large">
-                    <div class="project-image">
-                        <img src="images/c-sharp-calc/project.jpg" />
+                    <div class="project-page" hidden="true">
+                        <div class="container">
+                            <div class="row">
+                                <div class="project project-contents" id="tutorial">
+                                    <div class="project-image">
+                                        <a href="images/crystal-guard/tutorial.png" data-gallery="crystal" data-toggle="lightbox">
+                                            <img class="rounded img-fluid" src="images/crystal-guard/tutorial.png" width="300" height="300">
+                                        </a>
+                                    </div>
+                                    <!-- End .project-image -->
+                                    <div class="project-info">
+                                        <h3>Tutorial</h3>
+                                        <p>Here you can see the beginning of the tutorial for The Crystal Guard.
+                                            <br> As you complete set actions the tutorial will progress until you have a grasp on the controls and concept of the game.</p>
+                                    </div>
+                                </div>
+                                <div class="project project-contents" id="pathfinding-and-grid">
+                                    <div class="project-image">
+                                        <a href="images/crystal-guard/astargrid.png" data-gallery="crystal" data-toggle="lightbox">
+                                            <img class="rounded img-fluid" width="300" height="300" src="images/crystal-guard/tutorial.png" width="300" height="300">
+                                        </a>
+                                    </div>
+                                    <!-- End .project-image -->
+                                    <div class="project-info">
+                                        <h3>A* pathfinding and grid</h3>
+                                        <p>In this image you can see the debugged grid on which enemy AI pathfinds and player place towers.
+                                            <br> The red cubes are where enemies cannot go (unwalkable), yellow cubes are cubes that are adjactend to unwalkable cubes.
+                                            <br> The black line shows the path that ground units are planning to take and the pink line shows the path that air units will take.
+                                            <br> Pathfinding is done using a variation on a* pathfinding.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- End .project-image -->
-                    <div class="project-info">
-                        <h3>C# Calculator</h3>
-                        <p>Just a small calculator I made in Visual Studio with the .Net framework.</p>
-                        <a href="c-sharp-calc">View Project</a>
+                    <!--<div class="w-100"></div>
+                    <div class="jumbotron" id="pathfinding-and-grid">
+                        <div class="row">
+                            <div class="col-sm">
+                                <h4>A* pathfinding and grid</h4>
+                                In this image you can see the debugged grid on which enemy AI pathfinds and player place towers.
+                                <br> The red cubes are where enemies cannot go (unwalkable), yellow cubes are cubes that are adjactend to unwalkable cubes.
+                                <br> The black line shows the path that ground units are planning to take and the pink line shows the path that air units will take.
+                                <br> Pathfinding is done using a variation on a* pathfinding.
+                            </div>
+                            <div class="col-sm">
+                                <a href="images/crystal-guard/astargrid.png" data-gallery="crystal" data-toggle="lightbox">
+                                    <img class="rounded img-fluid" src="images/crystal-guard/astargrid.png">
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <!-- End .project-info -->
+                    <div class="w-100"></div>
+                    <div class="jumbotron" id="responsive-pathfinding">
+                        <div class="row">
+                            <div class="col-sm">
+                                <h4>Responsive pathfinding</h4>
+                                This picture shows what happens to enemy pathfinding when towers block their fastest route to their end goal (the crystal).
+                                <br> The player has placed two towers in such a way that ground enemies have no room to get through that way so they have to pathfind around a longer way.
+                                <br> This gives the player longer to kill them and if the player wants, they could lead enemies into a "killzone" with many more turrets.
+                                <br> Also shown in the picture is the air enemy path which is unchanged as they can just fly over the player's towers.
+                            </div>
+                            <div class="col-sm">
+                                <a href="images/crystal-guard/astartowers.png" data-gallery="crystal" data-toggle="lightbox">
+                                    <img class="rounded img-fluid" src="images/crystal-guard/astartowers.png">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="jumbotron" id="tower-placement">
+                        <div class="row">
+                            <div class="col-sm">
+                                <h4>Tower Placement</h4>
+                                Here you can see the player looking at the ground to choose where to put their next tower.
+                                <br> The player is placing an electric type of tower which shocks all enemies inside its radius at a constant rate.
+                                <br> This tower is good because it causes damage to all enemies within its range.
+                                <br> The other tower types are "Trigun" which is a minigun type tower, and "Plasma Cannon" which is a slow firing, splash damage, projectile tower.
+                            </div>
+                            <div class="col-sm">
+                                <a href="images/crystal-guard/towerplacement.png" data-gallery="crystal" data-toggle="lightbox">
+                                    <img class="rounded img-fluid" src="images/crystal-guard/towerplacement.png">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- End .project -->
+            </div>
+        </div>-->
+                </div>
             </div>
         </div>
+    </div>
+    <!-- End .project -->
+
+    <div class="project shadow-large">
+        <div class="project-image">
+            <img src="images/c-sharp-calc/project.jpg" />
+        </div>
+        <!-- End .project-image -->
+        <div class="project-info">
+            <h3>C# Calculator</h3>
+            <p>Just a small calculator I made in Visual Studio with the .Net framework.</p>
+            <div class="btn-rounded-orange" onclick="continueToExternal('https://github.com/rmp613/portfolio/tree/master/CSharpCalculator')">View Project</div>
+        </div>
+        <!-- End .project-info -->
+    </div>
+    <!-- End .project -->
+    </div>
+    </div>
     </div>
     <!-- End #projects -->
 

@@ -9,8 +9,17 @@
     Description: This file contains all the scripts associated with the single-page
     portfolio website.
 */
+function continueToExternal(url) {
+    var conf = confirm("Now leaving riordanpawley.com. \rNavigating to " + url);
+    if (conf) {
+        window.location.href = url;
+        document.body.style.cursor = "wait";
+        console.log(this);
+    }
+}
 
 (function($) {
+
 
     // Remove no-js class
     $('html').removeClass('no-js');
@@ -49,7 +58,14 @@
             scrollTop: scrollDistance + 'px'
         }, 500);
     });
-
+    $('#view-project').click(function() {
+        $('.project-page').toggle(500);
+    });
+    $('.btn-project-toggle').click(function() {
+        if (this.innerHTML == "View Project") {
+            this.innerHTML = "Collapse Project";
+        } else this.innerHTML = "View Project";
+    });
     // Create timeline
     $('#experience-timeline').each(function() {
 
@@ -70,7 +86,7 @@
         $this.find('.vtimeline-content').each(function() {
             var date = $(this).data('date');
             if (date) { // Prepend if exists
-                $(this).parent().prepend('<span class="vtimeline-date">'+date+'</span>');
+                $(this).parent().prepend('<span class="vtimeline-date">' + date + '</span>');
             }
         });
 

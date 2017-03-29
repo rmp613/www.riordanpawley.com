@@ -3,28 +3,30 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="The portfolio website of Riordan Pawley">
-    <meta name="author" content="Riordan Pawley">
-
-    <title>Portfolio of Riordan Pawley</title>
-
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-
-    <link href="../css/style.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Portfolio</title>
+    <!--<link href="https://fonts.googleapis.com/css?family=Droid+Sans:300,400,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css">-->
+    <!--<link href="../css/bootstrap.min.css" rel="stylesheet">-->
+    <!--<link href="../css/styles.css" rel="stylesheet">-->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link href="../old/css/style.css" rel="stylesheet">
 </head>
 
 <body>
-    <!-- //load jquery and navbar -->
-    <div id="nav-placeholder">
+    <header>
+        <div class="home ">
+            Home
+        </div>
+    </header>
+    <!-- End header -->
+
+    <div class="jumbotron">
+        why
     </div>
-    <script src="../js/libs/jquery.min.js"></script>
-    <script>
-        $("#nav-placeholder").load("/nav.html");
-    </script>
-
-
-
     <div class="container-fluid" id="main">
         <div class="jumbotron">
             <h2 class="display-4">The Crystal Guard (UTS Game Design Studio 2, 2016)</h2>
@@ -48,8 +50,8 @@
                                 <br> As you complete set actions the tutorial will progress until you have a grasp on the controls and concept of the game.
                             </div>
                             <div class="col-sm">
-                                <a href="../../images/crystal-guard/tutorial.png" data-gallery="crystal" data-toggle="lightbox">
-                                    <img class="rounded img-fluid" src="../../images/crystal-guard/tutorial.png">
+                                <a href="../images/crystal-guard/tutorial.png" data-gallery="crystal" data-toggle="lightbox">
+                                    <img class="rounded img-fluid" src="../images/crystal-guard/tutorial.png">
                                 </a>
                             </div>
                         </div>
@@ -65,8 +67,8 @@
                                 <br> Pathfinding is done using a variation on a* pathfinding.
                             </div>
                             <div class="col-sm">
-                                <a href="../../images/crystal-guard/astargrid.png" data-gallery="crystal" data-toggle="lightbox">
-                                    <img class="rounded img-fluid" src="../../images/crystal-guard/astargrid.png">
+                                <a href="../images/crystal-guard/astargrid.png" data-gallery="crystal" data-toggle="lightbox">
+                                    <img class="rounded img-fluid" src="../images/crystal-guard/astargrid.png">
                                 </a>
                             </div>
                         </div>
@@ -82,8 +84,8 @@
                                 <br> Also shown in the picture is the air enemy path which is unchanged as they can just fly over the player's towers.
                             </div>
                             <div class="col-sm">
-                                <a href="../../images/crystal-guard/astartowers.png" data-gallery="crystal" data-toggle="lightbox">
-                                    <img class="rounded img-fluid" src="../../images/crystal-guard/astartowers.png">
+                                <a href="../images/crystal-guard/astartowers.png" data-gallery="crystal" data-toggle="lightbox">
+                                    <img class="rounded img-fluid" src="../images/crystal-guard/astartowers.png">
                                 </a>
                             </div>
                         </div>
@@ -99,8 +101,8 @@
                                 <br> The other tower types are "Trigun" which is a minigun type tower, and "Plasma Cannon" which is a slow firing, splash damage, projectile tower.
                             </div>
                             <div class="col-sm">
-                                <a href="../../images/crystal-guard/towerplacement.png" data-gallery="crystal" data-toggle="lightbox">
-                                    <img class="rounded img-fluid" src="../../images/crystal-guard/towerplacement.png">
+                                <a href="../images/crystal-guard/towerplacement.png" data-gallery="crystal" data-toggle="lightbox">
+                                    <img class="rounded img-fluid" src="../images/crystal-guard/towerplacement.png">
                                 </a>
                             </div>
                         </div>
@@ -109,27 +111,7 @@
             </div>
         </div>
     </div>
-    <span id="top-link-block" class="hidden">
-    <a href="#top" class="well well-sm" onclick="animateScrollTop()">
-        <i class="glyphicon glyphicon-chevron-up"></i> Back to Top
-    </a>
-    </span>
-
-    <script>
-        function continueToExternal(url) {
-            var conf = confirm("Now leaving riordanpawley.com");
-            if (conf) {
-                window.location.href = url;
-                document.body.style.cursor = "wait";
-            }
-        }
-    </script>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0../js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="../js/libs/bootstrap.min.js"></script>
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 </body>
 
 </html>
