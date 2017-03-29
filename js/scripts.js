@@ -58,14 +58,24 @@ function continueToExternal(url) {
             scrollTop: scrollDistance + 'px'
         }, 500);
     });
-    $('#view-project').click(function() {
-        $('.project-page').show();
-        $('.project-page').toggle(500);
+
+    $('.view-project').click(function() {
+        $(this).parent().parent().find('.project-page').toggle(1000);
+        $('html, body').animate({
+            scrollTop: $(this).parent().parent().offset().top
+        }, 500);
     });
+
     $('.btn-project-toggle').click(function() {
-        if (this.innerHTML == "View Project") {
-            this.innerHTML = "Collapse Project";
-        } else this.innerHTML = "View Project";
+        $this = $(this); // Store reference to this
+        console.log($this.html());
+        if ($this.html() == "Expand") {
+            $this.parent().find('.view-project').html("Collapse");
+            $this.html("Collapse");
+        } else {
+            $this.parent().parent().find('.view-project').html("Expand");
+            $this.html("Expand");
+        }
     });
     // Create timeline
     $('#experience-timeline').each(function() {
