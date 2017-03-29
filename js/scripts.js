@@ -59,6 +59,7 @@ function continueToExternal(url) {
         }, 500);
     });
     $('#view-project').click(function() {
+        $('.project-page').show();
         $('.project-page').toggle(500);
     });
     $('.btn-project-toggle').click(function() {
