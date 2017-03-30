@@ -709,6 +709,12 @@ footer {
     position: relative;
     left: 0;
     display: none;
+    overflow: hidden;
+    iframe {
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
 }
 
 .clip-300 {
@@ -726,8 +732,10 @@ footer {
     // position: relative;
     // left: 0;
     // top: 300px;
+    position: relative;
     height: 490px;
     width: 650px;
+    overflow: hidden;
 }
 
 
