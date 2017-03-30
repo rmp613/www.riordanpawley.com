@@ -684,17 +684,6 @@ footer {
     position: relative;
 }
 
-.clip-300 {
-    position: absolute;
-    left: -1000%;
-    right: -1000%;
-    top: -1000%;
-    bottom: -1000%;
-    margin: auto;
-    min-height: 100%;
-    min-width: 100%;
-}
-
 .project-info {
     //position: absolute;
     top: 50%;
@@ -720,6 +709,25 @@ footer {
     position: relative;
     left: 0;
     display: none;
+}
+
+.clip-300 {
+    position: absolute;
+    left: -1000%;
+    right: -1000%;
+    top: -1000%;
+    bottom: -1000%;
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+#snake-frame {
+    // position: relative;
+    // left: 0;
+    // top: 300px;
+    height: 490px;
+    width: 650px;
 }
 
 
