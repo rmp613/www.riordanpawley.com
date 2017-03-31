@@ -13,10 +13,8 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
     <link href="css/styles.css" rel="stylesheet">
-    <script src="js/scripts.min.js"></script>
 </head>
 
 <body>
@@ -361,6 +359,7 @@
         </div>
     </footer>
     <!-- End footer -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
@@ -374,7 +373,17 @@
             $(this).ekkoLightbox();
         });
     </script>
-
+    <script>
+        function toggleSnake() {
+            if (document.getElementById('snake-frame').src === 'snake') {
+                $('#snake-frame').toggle();
+            } else {
+                document.getElementById('snake-frame').src = 'snake';
+                $('.frame-box').toggle();
+            }
+        }
+    </script>
+    <script src="js/scripts.min.js"></script>
 
 </body>
 
