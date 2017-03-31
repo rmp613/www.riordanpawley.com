@@ -712,8 +712,8 @@ footer {
 }
 
 .frame-box {
-    height: 500px;
-    width: 660px;
+    min-height: 500px;
+    min-width: 660px;
     position: relative;
     display: none;
     iframe {
