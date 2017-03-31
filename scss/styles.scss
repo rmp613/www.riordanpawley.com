@@ -711,8 +711,11 @@ footer {
     display: none;
     overflow: hidden;
     iframe {
+        min-height: 505px;
+        min-width: 665px;
         margin: 0;
         padding: 0;
+        border: 0;
         border: none;
     }
 }
