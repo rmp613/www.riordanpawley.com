@@ -18,6 +18,15 @@ function continueToExternal(url) {
     }
 }
 
+function toggleSnake() {
+    if (document.getElementById('snake-frame').src === 'snake') {
+        $('#snake-frame').toggle();
+    } else {
+        document.getElementById('snake-frame').src = 'snake';
+        $('.frame-box').toggle();
+    }
+
+}
 (function($) {
 
 

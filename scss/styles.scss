@@ -709,13 +709,23 @@ footer {
     position: relative;
     left: 0;
     display: none;
-    overflow: hidden;
+}
+
+.frame-box {
+    height: 500px;
+    width: 660px;
+    position: relative;
+    display: none;
     iframe {
-        min-height: 510px;
-        min-width: 670px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
         margin: 0;
         padding: 0;
-        border: 0;
         border: none;
     }
 }
@@ -729,16 +739,6 @@ footer {
     margin: auto;
     min-height: 100%;
     min-width: 100%;
-}
-
-#snake-frame {
-    // position: relative;
-    // left: 0;
-    // top: 300px;
-    position: relative;
-    height: 490px;
-    width: 650px;
-    overflow: hidden;
 }
 
 
