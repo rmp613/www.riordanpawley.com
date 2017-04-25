@@ -18,23 +18,15 @@ function continueToExternal(url) {
     }
 }
 
-function toggleSnake() {
-    if (document.getElementById('snake-frame').src === 'snake') {
-        $('#snake-frame').toggle();
-    } else {
-        document.getElementById('snake-frame').src = 'snake';
-        $('.frame-box').toggle();
-    }
 
-}
-(function($) {
+(function ($) {
 
 
     // Remove no-js class
     $('html').removeClass('no-js');
 
     // Animate to section when nav is clicked
-    $('header a').click(function(e) {
+    $('header a').click(function (e) {
 
         // Treat as normal link if no-scroll class
         if ($(this).hasClass('no-scroll')) return;
@@ -54,28 +46,37 @@ function toggleSnake() {
     });
 
     // Scroll to top
-    $('#to-top').click(function() {
+    $('#to-top').click(function () {
         $('html, body').animate({
             scrollTop: 0
         }, 500);
     });
 
     // Scroll to first element
-    $('#lead-down span').click(function() {
+    $('#lead-down span').click(function () {
         var scrollDistance = $('#lead').next().offset().top;
         $('html, body').animate({
             scrollTop: scrollDistance + 'px'
         }, 500);
     });
 
-    $('.view-project').click(function() {
-        $(this).parent().parent().find('.project-page').toggle(1000);
-        $('html, body').animate({
-            scrollTop: $(this).parent().parent().offset().top
-        }, 500);
+    $('.view-project').click(function () {
+        var $projectPage = $(this).parent().find('.project-page');
+        console.log($projectPage.length);
+        // let projectPage = $(this).parent().find('.project-page') === $(this).parent().parent().find('.project-page');
+        if ($projectPage.length === 0) {
+            $(this).parent().parent().find('.project-page').toggle();
+            $('html, body').animate({
+                scrollTop: $(this).parent().parent().offset().top
+            }, 500);
+        } else {
+            $projectPage.toggle();
+            $('html, body').animate({
+                scrollTop: $(this).parent().offset().top
+            }, 500);
+        }
     });
-
-    $('.btn-project-toggle').click(function() {
+    $('.btn-project-toggle').click(function () {
         $this = $(this); // Store reference to this
         console.log($this.html());
         if ($this.html() == "Expand") {
@@ -87,23 +88,23 @@ function toggleSnake() {
         }
     });
     // Create timeline
-    $('#experience-timeline').each(function() {
+    $('#experience-timeline').each(function () {
 
         $this = $(this); // Store reference to this
         $userContent = $this.children('div'); // user content
 
         // Create each timeline block
-        $userContent.each(function() {
+        $userContent.each(function () {
             $(this).addClass('vtimeline-content').wrap('<div class="vtimeline-point"><div class="vtimeline-block"></div></div>');
         });
 
         // Add icons to each block
-        $this.find('.vtimeline-point').each(function() {
+        $this.find('.vtimeline-point').each(function () {
             $(this).prepend('<div class="vtimeline-icon"><i class="fa fa-map-marker"></i></div>');
         });
 
         // Add dates to the timeline if exists
-        $this.find('.vtimeline-content').each(function() {
+        $this.find('.vtimeline-content').each(function () {
             var date = $(this).data('date');
             if (date) { // Prepend if exists
                 $(this).parent().prepend('<span class="vtimeline-date">' + date + '</span>');
@@ -113,12 +114,12 @@ function toggleSnake() {
     });
 
     // Open mobile menu
-    $('#mobile-menu-open').click(function() {
+    $('#mobile-menu-open').click(function () {
         $('header, body').addClass('active');
     });
 
     // Close mobile menu
-    $('#mobile-menu-close').click(function() {
+    $('#mobile-menu-close').click(function () {
         $('header, body').removeClass('active');
     });
 

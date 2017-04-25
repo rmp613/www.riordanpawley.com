@@ -1,6 +1,7 @@
     const baseSnake = new Snake(new Vector2(-1, 0), 5, 5);
     let snake = new Snake(baseSnake);
 
+    //TODO::: FIX SNAKE ADJACENT, PARALLEL TO EDGE GROWS FOR EVER
     (function() {
         let baseSnakeRect;
         let buffer;
