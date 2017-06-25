@@ -1,8 +1,13 @@
-
 var utility = (function(){
    
+   /********** public methods **********/
    function removeWhiteSpace(word){
       return str.replace(/\s+/g, '');
+   }
+
+   function getExtension(filename) {
+      var parts = filename.split('.');
+      return parts[parts.length - 1];
    }
 
    function wordCount(words){
@@ -16,13 +21,15 @@ var utility = (function(){
       return line.trim()
             .split(regexString)
             .map(words => {
-            return words.trim();
+                  return words.trim();
             });
    }
+   /********** end public methods **********/
 
 
    var api = {
       removeWhiteSpace: removeWhiteSpace,
+      getExtension: getExtension,
       wordCount: wordCount,
       splitAndTrim: splitAndTrim
    }

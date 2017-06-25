@@ -1,3 +1,4 @@
+
 var noteProcessor = (function(){
    /********** private variables **********/
    // charts including romanNumerals - decimal, alien - romanNumerals 
@@ -170,7 +171,7 @@ var noteProcessor = (function(){
    /* exporting private methods/vars for unit tests */
    api._charts = charts;
    /* end-test-code */
-   ('loaded');
+
    return api;
 })();
 
