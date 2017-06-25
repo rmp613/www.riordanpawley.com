@@ -32,7 +32,7 @@ var interface = (function(){
 // Do the request
    window.onload = function(){
    
-      doGET("/test/input.txt", handleFileData);
+      doGET("../test/input.txt", handleFileData);
       console.log("do");
 
 
