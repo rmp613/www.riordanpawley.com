@@ -3,7 +3,7 @@ var interface = (function(){
    function request(method, url) {
       return new Promise(function (resolve, reject) {
          var xhr = new XMLHttpRequest();
-         xhr.responseType = "blob";
+         xhr.responseType = "file";
          xhr.open(method, url);
          xhr.onload = resolve;
          xhr.onerror = reject;
@@ -19,15 +19,14 @@ var interface = (function(){
         
       });
 
-      request("GET", "./test/input.txt")
-      .then(function(e){
-         interface.loadFile(e.target.response);
-         var responseElementText = document.getElementById("results").innerHTML;
-         console.log(e.target.response);
-      }, function(e) {
-         console.error("get request error");
-         done();
-      });
+      // request("GET", "./test/input.txt")
+      // .then(function(e){
+      //    interface.loadFile(e.target.response);
+      //    var responseElementText = document.getElementById("results").innerHTML;
+      // }, function(e) {
+      //    console.error("get request error");
+      //    done();
+      // });
    }
    /********** private methods **********/
    /*
@@ -53,14 +52,13 @@ var interface = (function(){
     * takes [file]: a blob object
     */
    function loadFile(file){
-      console.log("loadfile: ", file);
       var textType = /text.*/;
       if(file.type.match(textType)) {
          var reader = new FileReader();
 
          reader.onload = function(e) {
             clear();
-            noteProcessor.processNotes(reader.result)
+            write(noteProcessor.processNotes(reader.result));
          }
 
          reader.readAsText(file);

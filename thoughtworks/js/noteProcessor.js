@@ -152,8 +152,6 @@ var noteProcessor = (function(){
     * takes [notes]: a STRING containing lines of notes
     */
    function processNotes(notes) {
-      console.log(notes);
-      console.log("didnt fail>>.");
       // put every line into an array
       var linesFromFile = notes.match(/[^\r\n]+/g);
       var output = "";
