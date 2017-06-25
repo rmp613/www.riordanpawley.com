@@ -1,3 +1,6 @@
-QUnit.test("utility exists", function(assert){
-  assert.notEqual(utility, undefined);
-})
+QUnit.module("utility", function(){
+
+   QUnit.test("utility exists", function(assert){
+   assert.ok(utility);
+   });
+});
