@@ -13,6 +13,9 @@ function request(method, url) {
    });
 }
 QUnit.test("can write to results div", function (assert) {
+   stop();
+   setTimeout(function(){
+     
    var correctString = "pish tegj glob glob is 42<br>glob prok Silver is 68 Credits<br>glob prok Gold is 57800 Credits<br>glob prok Iron is 782 Credits<br>I have no idea what you are talking about <br>"
    request("GET", "./test/input.txt")
       .then(function(e){
@@ -20,8 +23,12 @@ QUnit.test("can write to results div", function (assert) {
          var responseElementText = document.getElementById("results").innerHTML;
          console.log(responseElementText);
          console.log(correctString);
+         
          assert.equal(responseElementText, correctString);
+         start();
       }, function(e) {
          console.error("get request error");
       });
+       
+   }, 1000);
 });
