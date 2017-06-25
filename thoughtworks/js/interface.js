@@ -55,7 +55,7 @@ var interface = (function(){
     * takes [file]: a blob object
     */
    function loadFile(file){
-      new Promise(function(resove, reject){
+      return new Promise(function(resove, reject){
          var textType = /text.*/;
          if(file.type.match(textType)) {
             var reader = new FileReader();
