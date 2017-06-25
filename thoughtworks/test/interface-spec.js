@@ -17,7 +17,6 @@ QUnit.module("interface", function(){
    });
 
    QUnit.test("can write to results div", function (assert) {
-      assert.expect(0);
       var done = assert.async();
 
          var correctString = "pish tegj glob glob is 42<br>glob prok Silver is 68 Credits<br>glob prok Gold is 57800 Credits<br>glob prok Iron is 782 Credits<br>I have no idea what you are talking about <br>"
@@ -32,7 +31,7 @@ QUnit.module("interface", function(){
                   done();
                });
             }, function(e) {
-               assert
+               assert.expect(0);
                console.error("Can write results to div error: Couldn't get the test input.txt file likely due to browser security. In order to run this test the app needs to be run on a server e.g. www.riordanpawley.com/thoughtworks/test.html");
                done();
             });
