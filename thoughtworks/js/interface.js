@@ -23,7 +23,7 @@ var interface = (function(){
       .then(function(e){
          interface.loadFile(e.target.response);
          var responseElementText = document.getElementById("results").innerHTML;
-         console.log("done");
+         console.log(e.target.response);
       }, function(e) {
          console.error("get request error");
          done();
@@ -53,6 +53,7 @@ var interface = (function(){
     * takes [file]: a blob object
     */
    function loadFile(file){
+      console.log("loadfile: ", file);
       var textType = /text.*/;
       if(file.type.match(textType)) {
          var reader = new FileReader();
