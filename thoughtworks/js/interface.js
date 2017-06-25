@@ -1,6 +1,15 @@
 
 var interface = (function(){
-// Do the request
+   function request(method, url) {
+      return new Promise(function (resolve, reject) {
+         var xhr = new XMLHttpRequest();
+         xhr.responseType = "blob";
+         xhr.open(method, url);
+         xhr.onload = resolve;
+         xhr.onerror = reject;
+         xhr.send();
+      });
+   }  
    window.onload = function(){
       var fileInput = document.getElementById("file-selector");
 
@@ -8,6 +17,21 @@ var interface = (function(){
          var file = fileInput.files[0];
          loadFile(file);
         
+      });
+
+      request("GET", "./test/input.txt")
+      .then(function(e){
+         interface.loadFile(e.target.response);
+         var responseElementText = document.getElementById("results").innerHTML;
+         console.log(responseElementText);
+         console.log(correctString);
+         setTimeout(function(){
+            assert.equal(responseElementText, correctString);
+            
+         }, 1000);
+      }, function(e) {
+         console.error("get request error");
+         done();
       });
    }
    /********** private methods **********/
