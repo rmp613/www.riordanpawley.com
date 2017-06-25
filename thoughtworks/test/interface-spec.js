@@ -23,9 +23,11 @@ QUnit.test("can write to results div", function (assert) {
          var responseElementText = document.getElementById("results").innerHTML;
          console.log(responseElementText);
          console.log(correctString);
-         
-         assert.equal(responseElementText, correctString);
-         done();
+         setTimeout(function(){
+            assert.equal(responseElementText, correctString);
+            
+            done();
+         }, 1000);
       }, function(e) {
          console.error("get request error");
          done();
