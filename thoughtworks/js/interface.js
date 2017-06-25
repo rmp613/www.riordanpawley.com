@@ -1,40 +1,25 @@
 
 var interface = (function(){
-   function doGET(path, callback) {
-      var xhr = new XMLHttpRequest();
-      
-      xhr.responseType = 'blob';
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4) {
-            // The request is done; did it work?
-            if (xhr.status == 200) {
-                // ***Yes, use `xhr.responseText` here***
-                callback(xhr.response);
-            } else {
-                // ***No, tell the callback the call failed***
-                callback(null);
-            }
-        }
-      };
-      xhr.open("GET", path);
-      xhr.send();
-   }
-
-   function handleFileData(fileData) {
-      if (!fileData) {
-         console.log("error");
-         return;
-      }
-      var blob = this.response;
-      console.log(fileData);
-      console.log(blob);
-   }
+   function request(method, url) {
+    return new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        xhr.responseType = "blob";
+        xhr.open(method, url);
+        xhr.onload = resolve;
+        xhr.onerror = reject;
+        xhr.send();
+    });
+}
 
 // Do the request
    window.onload = function(){
-   
-      doGET("./test/input.txt", handleFileData);
-      console.log("do");
+   request('GET', './test/input.txt')
+    .then(function (e) {
+        console.log(e.target.response);
+        console.log(e);
+    }, function (e) {
+        console.error("get request failed");
+    });
 
 
       var fileInput = document.getElementById("file-selector");
