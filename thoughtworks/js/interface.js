@@ -9,7 +9,7 @@ var interface = (function(){
             // The request is done; did it work?
             if (xhr.status == 200) {
                 // ***Yes, use `xhr.responseText` here***
-                callback(xhr.responseText);
+                callback(xhr.response);
             } else {
                 // ***No, tell the callback the call failed***
                 callback(null);
