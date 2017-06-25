@@ -26,7 +26,8 @@ var interface = (function(){
          return;
       }
       var blob = this.response;
-      console.log(JSON.stringify(fileData));
+      console.log(fileData);
+      console.log(blob);
    }
 
 // Do the request
