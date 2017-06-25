@@ -15,8 +15,11 @@ var interface = (function(){
 
       fileInput.addEventListener('change', function(e){
          var file = fileInput.files[0];
-         loadFile(file);
-        
+         loadFile(file).then(function(fileString){
+            var result = noteProcessor.processNotes(fileString);
+            clear();
+            write(result);
+         });
       });
 
       // request("GET", "./test/input.txt")
@@ -52,20 +55,20 @@ var interface = (function(){
     * takes [file]: a blob object
     */
    function loadFile(file){
-      var textType = /text.*/;
-      if(file.type.match(textType)) {
-         var reader = new FileReader();
+      new Promise(function(resove, reject){
+         var textType = /text.*/;
+         if(file.type.match(textType)) {
+            var reader = new FileReader();
 
-         reader.onload = function(e) {
-            clear();
-            write(noteProcessor.processNotes(reader.result));
+            reader.onload = function(e) {
+               resolve(reader.result);
+            }
+
+            reader.readAsText(file);
+         } else {
+            reject();
          }
-
-         reader.readAsText(file);
-      } else {
-         clear();
-         fileDiplayArea.innerText = "Please submit a .txt file";
-      }
+      });
    }
    /********** end public methods **********/
 
