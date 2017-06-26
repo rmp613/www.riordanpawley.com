@@ -24,15 +24,18 @@ QUnit.module("interface", function(){
             .then(function(e){
                interface.loadFile(e.target.response).then(function(fileString){
                   var responseString = noteProcessor.processNotes(fileString);
-                  console.log(responseString);
-                  console.log(correctString);
-
                   assert.equal(responseString, correctString);
                   done();
                });
             }, function(e) {
-               assert.expect(0);
-               console.error("Can write results to div error: Couldn't get the test input.txt file likely due to browser security. In order to run this test the app needs to be run on a server e.g. www.riordanpawley.com/thoughtworks/test.html");
+               // assert.expect(0);
+               // console.error("Can write results to div error: Couldn't get the test input.txt file likely due to browser security. In order to run this test the app needs to be run on a server e.g. www.riordanpawley.com/thoughtworks/test.html");
+               assert.throws(
+                  function () {
+                     throw "error"
+                  },
+                  "Couldn't get the test input.txt file likely due to browser security. In order to run this test the app needs to be run on a server e.g. www.riordanpawley.com/thoughtworks/test.html"
+               );
                done();
             });
             
