@@ -10,12 +10,6 @@ QUnit.module("utility", function(){
       assert.equal(result, expectedResult)
    });
 
-   QUnit.test("UNIT: removeWhiteSpace(): returns the input string without any surrounding whitespace", function(assert){
-      var result = utility.removeWhiteSpace(" word ");
-      var expectedResult = "word";
-      assert.equal(result, expectedResult)
-   });
-
    QUnit.test("UNIT: getExtension(): returns extension of the input fileString", function(assert){
       var result = utility.getExtension("text.txt");
       var expectedResult = "txt";
