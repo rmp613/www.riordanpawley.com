@@ -9,10 +9,6 @@ QUnit.module("noteProcessor", function(hooks){
       assert.ok(noteProcessor);
    });
 
-   QUnit.test("UNIT: noteProcessor exists", function(assert){
-      console.log(noteProcessor);
-   });
-
    QUnit.test("UNIT: processLine() returns an error message if the string is empty", function(assert){
       var result = noteProcessor._processLine("");
       var expectedResult = "I have no idea what you are talking about <br>";
@@ -21,15 +17,15 @@ QUnit.module("noteProcessor", function(hooks){
    });
 
    QUnit.test("UNIT: processLine() returns an empty string if the input line was a valid statement rather than a question", function(assert){
-      var result = noteProcessor._processLine("asdf is IV");
+      var result = noteProcessor._processLine("asdf is V");
       var expectedResult = "";
      
       assert.equal(result, expectedResult);
    });
-   //TODO WRTIE THIS TEST
-   QUnit.test("UNIT: processLine() returns the correct response to the question on the line", function(assert){
+   
+   QUnit.test("UNIT: processLine() returns an error string if the input string tries to set an alien word to something other than a single roman numeral", function(assert){
       var result = noteProcessor._processLine("asdf is IV");
-      var expectedResult = "";
+      var expectedResult = noteProcessor._alienChartErrorString;
      
       assert.equal(result, expectedResult);
    });
@@ -154,9 +150,157 @@ QUnit.module("noteProcessor", function(hooks){
          asdf: "X"
       }
       
-      var beforeIs = "qwer asdf Iron";
+      var beforeIs = "asdf qwer Iron";
       var wordsAfterIs = [150, "Credits"];
       var result = noteProcessor._determineGoodsValue(beforeIs, wordsAfterIs);
       assert.equal(result, 10);
+   });
+
+   QUnit.test("UNIT: determineGoodsValue() returns an error message if the amount of goods is unreadable", function(assert){
+     
+      noteProcessor._charts.alien = {
+         qwer: "V",
+         asdf: "X"
+      }
+      
+      var beforeIs = "fdas ghdf Iron";
+      var wordsAfterIs = [150, "Credits"];
+      var result = noteProcessor._determineGoodsValue(beforeIs, wordsAfterIs);
+      
+      var expectedResult = beforeIs.split(" ");
+      expectedResult.pop();
+      expectedResult = expectedResult.join(" ") + " is " + noteProcessor._alienToRomanErrorString;
+     
+      assert.equal(result, expectedResult);
+   });
+
+   QUnit.test("UNIT: determineGoodsValue() returns an error message if there is no input price for the goods", function(assert){
+     
+      noteProcessor._charts.alien = {
+         qwer: "V",
+         asdf: "X"
+      }
+      
+      var beforeIs = "qwer asdf";
+      var wordsAfterIs = ["Credits"];
+      var result = noteProcessor._determineGoodsValue(beforeIs, wordsAfterIs);
+      var expectedResult = noteProcessor._generalErrorString;
+      assert.equal(result, expectedResult);
+   });
+
+   QUnit.test("UNIT: alienToRoman() the correct string of roman numerals corresponding to the alien words", function(assert){
+     
+      noteProcessor._charts.alien = {
+         qwer: "V",
+         asdf: "X"
+      }
+      var five = 'qwer', ten = 'asdf';
+      var alienWords = [five, five, ten, ten, ten];
+      var result = noteProcessor._alienToRoman(alienWords);
+      var expectedResult = "VVXXX";
+      assert.equal(result, expectedResult);
+   });
+
+   QUnit.test("UNIT: alienToRoman() returns alienToRomanErrorString if the alien words could not be understood", function(assert){
+      noteProcessor._charts.alien = {
+         qwer: "V",
+         asdf: "X"
+      }
+      var nonsense = 'fdas', ten = 'asdf';
+      var alienWords = [nonsense, nonsense, ten, ten, ten];
+      var result = noteProcessor._alienToRoman(alienWords);
+      var expectedResult = noteProcessor._alienToRomanErrorString;
+      assert.equal(result, expectedResult);
+   });
+
+   QUnit.test("UNIT: romanToDecimal() returns the decimal value of the input roman numeral string", function(assert){
+      var romanNumeralString = 'MMMCML';
+      var result = noteProcessor._romanToDecimal(romanNumeralString);
+      var expectedResult = 3950;
+      assert.equal(result, expectedResult);
+   });
+
+   QUnit.test("UNIT: romanToDecimal() returns romanToDecimalErrorString if the input roman numeral string was invalid", function(assert){
+      var romanNumeralString = 'XXXXLCM';
+      var result = noteProcessor._romanToDecimal(romanNumeralString);
+      var expectedResult = noteProcessor._romanToDecimalErrorString;
+      assert.equal(result, expectedResult);
+   });
+
+
+   QUnit.test("UNIT: alienToDecimal() returns the decimal value of an alien string", function(assert){
+      noteProcessor._charts.alien = {
+         qwer: "I",
+         zxcv: "V",
+         asdf: "X"
+      }
+      var one = 'qwer', five = 'zxcv', ten = 'asdf';
+      var alienWords = [ten, ten, ten, five, one, one, one];
+      var result = noteProcessor._alienToDecimal(alienWords);
+      var expectedResult = 38;
+      assert.equal(result, expectedResult);
+   });
+
+   QUnit.test("UNIT: alienToDecimal() returns an error string if the input alien string was invalid", function(assert){
+      noteProcessor._charts.alien = {
+         asdf: "X"
+      }
+      var nonsense = 'fdas', ten = 'asdf';
+      var alienWords = [nonsense, nonsense, ten, ten, ten];
+      var result = noteProcessor._alienToDecimal(alienWords);
+      var expectedResult = noteProcessor._alienToRomanErrorString;
+      assert.equal(result, expectedResult);
+   });
+
+   QUnit.test("UNIT: alienToDecimal() subtraction test", function(assert){
+      noteProcessor._charts.alien = {
+         asdf: "C",
+         fdsa: "I"
+      }
+      var alienWords = ["fdsa", "asdf"];
+      var result = noteProcessor._alienToDecimal(alienWords);
+      var expectedResult = noteProcessor._romanToDecimalErrorString;
+      assert.equal(result, expectedResult);
+   });
+
+   QUnit.test("UNIT: alienToDecimal() returns an error string if the input alien string resulted in invalid roman numerals", function(assert){
+      noteProcessor._charts.alien = {
+         asdf: "X"
+      }
+      var nonsense = 'fdas', ten = 'asdf';
+      var alienWords = [ten, ten, ten, ten];
+      var result = noteProcessor._alienToDecimal(alienWords);
+      var expectedResult = noteProcessor._romanToDecimalErrorString;
+      assert.equal(result, expectedResult);
+   });
+
+   QUnit.test("UNIT: isValidRomanNumeralString() returns true if the numeral string is valid", function(assert){
+      var testNumeralString = "XXXD";
+      var result = noteProcessor._isValidRomanNumeralString(testNumeralString);
+      var expectedResult = true;
+      assert.equal(result, expectedResult);
+   });
+
+   QUnit.test("UNIT: isValidRomanNumeralString() returns false if the numeral string is invalid", function(assert){
+      var testNumeralString = "XXXDDDD";
+      var result = noteProcessor._isValidRomanNumeralString(testNumeralString);
+      var expectedResult = false;
+      assert.equal(result, expectedResult);
+   });
+
+   QUnit.test("UNIT: inChart() returns true if the key is in the input subchart of charts", function(assert){
+      var key = "X";
+      var subchart = "romanNumerals";
+      var result = noteProcessor._inChart(subchart, key);
+      var expectedResult = true;
+      assert.equal(result, expectedResult);
+   });
+
+    QUnit.test("UNIT: inChart() returns true if the key is in the input subchart of charts", function(assert){
+      var key = "IX";
+      var subchart = "romanNumerals";
+      var result = noteProcessor._inChart(subchart, key);
+      var expectedResult = false;
+      assert.equal(result, expectedResult);
    });
 });

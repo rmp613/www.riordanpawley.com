@@ -1,4 +1,6 @@
 
+var runOnServerErrorMsg = "Short version: run the page on a server.\nLong Version: Couldn't get the test input.txt file likely due to browser security.\nIn order to run this test the app needs to be run on a server";
+
 function request(method, url) {
    return new Promise(function (resolve, reject) {
       var xhr = new XMLHttpRequest();
@@ -25,7 +27,7 @@ QUnit.module("interface", function(){
                done();
             });
          }, function(e) {
-            assert.ok(false, "Short version: run the page on a server.\nLong Version: Couldn't get the test input.txt file likely due to browser security.\nIn order to run this test the app needs to be run on a server e.g. \nwww.riordanpawley.com/thoughtworks/test.html");
+            assert.ok(false, runOnServerErrorMsg);
             done();
          }
       );
@@ -48,7 +50,7 @@ QUnit.module("interface", function(){
                done();
             });
          }, function(e) {
-            assert.ok(false, "Short version: run the page on a server.\nLong Version: Couldn't get the test input.txt file likely due to browser security.\nIn order to run this test the app needs to be run on a server e.g. \nwww.riordanpawley.com/thoughtworks/test.html");
+            assert.ok(false, runOnServerErrorMsg);
             done();
          }
       );
