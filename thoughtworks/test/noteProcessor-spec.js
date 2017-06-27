@@ -69,7 +69,7 @@ QUnit.module("noteProcessor", function(hooks){
       var ten = "asdf";
       var wordsAfterIs = [ten, ten, ten, ten];
       var result = noteProcessor._respondToHowMuch(wordsAfterIs);
-      var expectedResult = wordsAfterIs.join(" ") + " is " + noteProcessor._romanToDecimalErrorString + "<br>";
+      var expectedResult = wordsAfterIs.join(" ") + " is " + noteProcessor._romanToDecimalErrorString;
      
       assert.equal(result, expectedResult);
    });
@@ -83,7 +83,7 @@ QUnit.module("noteProcessor", function(hooks){
 
       var wordsAfterIs = [invalidWord, invalidWord, ten, ten];
       var result = noteProcessor._respondToHowMuch(wordsAfterIs);
-      var expectedResult = wordsAfterIs.join(" ") + " is " + noteProcessor._alienToRomanErrorString + "<br>";
+      var expectedResult = wordsAfterIs.join(" ") + " is " + noteProcessor._alienToRomanErrorString;
 
       assert.equal(result, expectedResult);
    });
@@ -115,7 +115,7 @@ QUnit.module("noteProcessor", function(hooks){
       }
       var wordsAfterIs = [ten, iron];
       var result = noteProcessor._respondToHowMany(wordsAfterIs);
-      var expectedResult = wordsAfterIs.join(" ") + " is " + noteProcessor._alienToRomanErrorString + "<br>";
+      var expectedResult = wordsAfterIs.join(" ") + " is " + noteProcessor._alienToRomanErrorString;
      
       assert.equal(result, expectedResult);
    });
@@ -131,7 +131,7 @@ QUnit.module("noteProcessor", function(hooks){
       }
       var wordsAfterIs = [five, five, five, five, iron];
       var result = noteProcessor._respondToHowMany(wordsAfterIs);
-      var expectedResult = wordsAfterIs.join(" ") + " is " + noteProcessor._romanToDecimalErrorString + "<br>";
+      var expectedResult = wordsAfterIs.join(" ") + " is " + noteProcessor._romanToDecimalErrorString;
       assert.equal(result, expectedResult);
    });
 
@@ -139,7 +139,7 @@ QUnit.module("noteProcessor", function(hooks){
       
       var wordsAfterIs = [];
       var result = noteProcessor._respondToHowMany(wordsAfterIs);
-      var expectedResult = wordsAfterIs.join(" ") + " is " + noteProcessor._isBlankErrorString + "<br>";
+      var expectedResult = wordsAfterIs.join(" ") + " is " + noteProcessor._isBlankErrorString;
       assert.equal(result, expectedResult);
    });
 
