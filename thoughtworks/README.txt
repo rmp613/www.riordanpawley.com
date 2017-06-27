@@ -1,3 +1,10 @@
+IMPORTANT - in order for the app and some tests to work the test.html 
+      page must be run on a server. I'm hosting it on my own server 
+      for convenience so if you want to see it in action:
+         www.riordanpawley.com/thoughtworks/test.html
+         www.riordanpawley.com/thoughtworks
+
+
 Assumptions:
    The structure of each line shown in the test input (except for the last line)
    shows how similar lines should be structured
@@ -8,21 +15,21 @@ Assumptions:
    Lines describing alien words will always come before lines that need the
    words to form a response.
 
-
 Design:
    Testing: 
       I used QUnit (JQuery's testing suite) to test my code.
       Tests are run on the test.html page.
       Each module has its own test module inside the test directory with the
-      naming scheme modulename-spec.js
+         naming scheme modulename-spec.js
+      
       To accomplish testing of private functions and variables I appended these
-      to the api of each module with an underscore prefix to show that they are 
-      intended to be private.
+         to the api of each module with an underscore prefix to show that they 
+         are intended to be private.
       In order to run a functional test of the app I used an AJAX request
-      function to load a text file for testing. I had to do this because it was
-      impossible to trick FileReader into loading the file.
+         function to load a text file for testing. I had to do this because it 
+         was impossible to trick FileReader into loading the file.
       I tried to implement a lot of unit tests so that the code would be easier
-      to maintain and evolve.
+         to maintain and evolve.
    
    Object Oriented: 
       I split my code up into 3 modules:
