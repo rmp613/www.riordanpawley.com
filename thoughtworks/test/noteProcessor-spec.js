@@ -64,7 +64,7 @@ QUnit.module("noteProcessor", function(hooks){
          asdf: "X"
       }
 
-      var invalidWord = "asdfa",
+      var invalidWord = "asdfa";
       var ten = "asdf";
       var wordsAfterIs = [invalidWord, invalidWord, ten, ten];
       var result = noteProcessor._respondToHowMuch(wordsAfterIs);
