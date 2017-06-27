@@ -225,8 +225,8 @@ var noteProcessor = (function(){
    /********** end public methods **********/
 
    var api = {
-      processNotes: processNotes,
-      _generalErrorString: generalErrorString
+      generalErrorString: generalErrorString,
+      processNotes: processNotes
    }
 
    /* test-code */
