@@ -1,62 +1,49 @@
 
 var interface = (function(){
-   function request(method, url) {
-      return new Promise(function (resolve, reject) {
-         var xhr = new XMLHttpRequest();
-         xhr.responseType = "file";
-         xhr.open(method, url);
-         xhr.onload = resolve;
-         xhr.onerror = reject;
-         xhr.send();
-      });
-   }  
+   
    window.onload = function(){
       var fileInput = document.getElementById("file-selector");
 
       fileInput.addEventListener('change', function(e){
          var file = fileInput.files[0];
+
          loadFile(file).then(function(fileString){
             var result = noteProcessor.processNotes(fileString);
-            clear();
-            write(result);
+            var elementID = 'results';
+
+            clear(elementID)
+            write(elementID, result);
          });
       });
-
-      // request("GET", "./test/input.txt")
-      // .then(function(e){
-      //    interface.loadFile(e.target.response);
-      //    var responseElementText = document.getElementById("results").innerHTML;
-      // }, function(e) {
-      //    console.error("get request error");
-      //    done();
-      // });
    }
+
+
    /********** private methods **********/
    /*
     * function that writes a string to the results div on the page
-    * takes [string]: a STRING
+    * takes [id]: a STRING which is used to get the element
+    * takes [string]: a STRING which is written to the element
     */
-   function write(string){
-      document.getElementById("results").innerHTML += string;
+   function write(id, string){
+      document.getElementById(id).innerHTML += string;
    }
 
    /*
-    * function that clears the results div
+    * function that clears the innerHTML of the passed in div id
+    * takes [id]: a STRING which is used to get the element
     */
-   function clear(){
-      document.getElementById("results").innerHTML = "";
+   function clear(id){
+      return document.getElementById(id).innerHTML = "";
    }
-   /********** end private methods **********/
 
-
-   /********** public methods **********/
    /*
     * function that loads a .txt file 
-    * takes [file]: a blob object
+    * takes [file]: a blob or file object
     */
    function loadFile(file){
       return new Promise(function(resolve, reject){
          var textType = /text.*/;
+
          if(file.type.match(textType)) {
             var reader = new FileReader();
 
@@ -70,6 +57,11 @@ var interface = (function(){
          }
       });
    }
+   /********** end private methods **********/
+
+
+   /********** public methods **********/
+   
    /********** end public methods **********/
 
    var api = {
@@ -79,6 +71,7 @@ var interface = (function(){
    /* test code */
    /* exporting private methods/vars for unit tests */
    api._write = write;
+   api._clear = clear;
    /* end test code */
 
    return api;
