@@ -181,11 +181,11 @@ var noteProcessor = (function(){
                return romanToDecimalErrorString;
             }
          } else if(current === next) {
-            oneAfterNext = charts.romanNumerals[numerals.charAt(i+2)];
-            twoAfterNext = charts.romanNumerals[numerals.charAt(i+3)];
-            if(next === oneAfterNext === twoAfterNext){
-               return romanToDecimalErrorString;
-            } else {
+            // oneAfterNext = charts.romanNumerals[numerals.charAt(i+2)];
+            // twoAfterNext = charts.romanNumerals[numerals.charAt(i+3)];
+            // if(next === oneAfterNext === twoAfterNext){
+            //    return romanToDecimalErrorString;
+            // } else {
                while(current === next){
                   total += current;
                   i++;
@@ -193,7 +193,7 @@ var noteProcessor = (function(){
                   next = charts.romanNumerals[numerals.charAt(i+1)];
                }
                if(current > next || next === undefined) total += current;
-            }
+            // }
          } else { // current >= next
             total += current;
          }
@@ -222,7 +222,7 @@ var noteProcessor = (function(){
    }
 
    /*
-    * returns a BOOLEAN of true if [string] is a valid roman numeral string
+    * returns a BOOLEAN of true if [string] is (on the surface) a valid roman numeral string
     * takes [string]: an STRING of roman numerals
     */
    function isValidRomanNumeralString(string){
@@ -292,6 +292,7 @@ var noteProcessor = (function(){
    api._romanToDecimal = romanToDecimal;
    api._isValidRomanNumeralString = isValidRomanNumeralString;
    api._inChart = inChart;
+   api._canBeSubtracted = canBeSubtracted;
    /* end-test-code */
 
    return api;

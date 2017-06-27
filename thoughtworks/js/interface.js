@@ -65,11 +65,11 @@ var interface = (function(){
    /********** end public methods **********/
 
    var api = {
-      loadFile: loadFile
    }
 
    /* test code */
    /* exporting private methods/vars for unit tests */
+   api._loadFile = loadFile;
    api._write = write;
    api._clear = clear;
    /* end test code */

@@ -227,7 +227,6 @@ QUnit.module("noteProcessor", function(hooks){
       assert.equal(result, expectedResult);
    });
 
-
    QUnit.test("UNIT: alienToDecimal() returns the decimal value of an alien string", function(assert){
       noteProcessor._charts.alien = {
          qwer: "I",
@@ -241,27 +240,35 @@ QUnit.module("noteProcessor", function(hooks){
       assert.equal(result, expectedResult);
    });
 
-   QUnit.test("UNIT: alienToDecimal() returns an error string if the input alien string was invalid", function(assert){
+   QUnit.test("UNIT: alienToDecimal() returns an error string if the input alien string turned into an invalid roman numeral string", function(assert){
       noteProcessor._charts.alien = {
-         asdf: "X"
+         fdsa: "I",
+         zxcv: "V",
+         asdf: "X",
+         qwer: "L"
       }
-      var nonsense = 'fdas', ten = 'asdf';
+      var nonsense = 'nonsense', 
+         one = "fdsa", 
+         five = "zxcv", 
+         ten = 'asdf',
+         fifty = "qwer";
+
       var alienWords = [nonsense, nonsense, ten, ten, ten];
       var result = noteProcessor._alienToDecimal(alienWords);
       var expectedResult = noteProcessor._alienToRomanErrorString;
       assert.equal(result, expectedResult);
-   });
 
-   QUnit.test("UNIT: alienToDecimal() subtraction test", function(assert){
-      noteProcessor._charts.alien = {
-         asdf: "C",
-         fdsa: "I"
-      }
-      var alienWords = ["fdsa", "asdf"];
+      var alienWords = [one, fifty];
+      var result = noteProcessor._alienToDecimal(alienWords);
+      var expectedResult = noteProcessor._romanToDecimalErrorString;
+      assert.equal(result, expectedResult);
+
+      var alienWords = [one, one, one, one];
       var result = noteProcessor._alienToDecimal(alienWords);
       var expectedResult = noteProcessor._romanToDecimalErrorString;
       assert.equal(result, expectedResult);
    });
+
 
    QUnit.test("UNIT: alienToDecimal() returns an error string if the input alien string resulted in invalid roman numerals", function(assert){
       noteProcessor._charts.alien = {
@@ -302,5 +309,16 @@ QUnit.module("noteProcessor", function(hooks){
       var result = noteProcessor._inChart(subchart, key);
       var expectedResult = false;
       assert.equal(result, expectedResult);
+   });
+
+   QUnit.test("UNIT: canBeSubtracted() returns a boolean which tells you if the first numeral can be subtracted from the second numeral", function(assert){
+      var result = noteProcessor._canBeSubtracted(1, 5);
+      assert.ok(result);
+      result = noteProcessor._canBeSubtracted(1, 10);
+      assert.ok(result)
+      result = noteProcessor._canBeSubtracted(10, 100);
+      assert.ok(result);
+      result = noteProcessor._canBeSubtracted(50, 100);
+      assert.notOk(result);
    });
 });
