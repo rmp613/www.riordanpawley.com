@@ -38,6 +38,8 @@ QUnit.module("interface", function(){
    });
 
    QUnit.test("UNIT: loadFile(): Loads a text file into a string", function (assert) {
+      var done = assert.async();
+
       request("GET", "./test/smallString.txt")
          .then(function(e){
             interface.loadFile(e.target.response).then(function(fileString){

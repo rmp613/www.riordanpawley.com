@@ -22,7 +22,10 @@ var noteProcessor = (function(){
       goods: {}
    }
 
-   var errorString = "I have no idea what you are talking about <br>";
+   var generalErrorString = "I have no idea what you are talking about <br>";
+   var alienToRomanErrorString = "a string containing words that cannot be understood";
+   var romanToDecimalErrorString = "a string containing an invalid roman numeral or an invalid roman numeral chain";
+   var isBlankErrorString = "blank"
    var whiteSpaceRegex = /\s+/g;
    var capitalWordRegex = /[A-Z]\w+/g;
    /********** end private variables **********/
@@ -42,7 +45,12 @@ var noteProcessor = (function(){
          afterIs = split[2];
       
       if(utility.wordCount(beforeIs) == 1 && charts.romanNumerals[afterIs]){
-         charts.alien[beforeIs] = afterIs;
+         if(inChart("romanNumerals", afterIs)){
+            charts.alien[beforeIs] = afterIs;
+            return "";
+         } else {
+            return "please make sure your input text file has correclty stated the value of each alien word. e.g. pish is L";
+         }
       } else if(afterIs) {
          var wordsAfterIs = utility.splitAndTrim(
                afterIs.replace(" ?", ""), 
@@ -53,13 +61,18 @@ var noteProcessor = (function(){
          } else if(beforeIs.match("how many")) {
             return respondToHowMany(wordsAfterIs)
          } else {
-            return determineGoodsValue(beforeIs, wordsAfterIs);
+            var goodsValue = determineGoodsValue(beforeIs, wordsAfterIs);
+            if(typeof goodsValue !== "number"){
+               return goodsValue;
+            } else {
+               var type = beforeIs.match(capitalWordRegex);
+               charts.goods[type] = goodsValue;
+               return "";
+            }
          }
-      } else {
-         return errorString;
       }
-
-      return "";
+      
+      return generalErrorString;
    }
 
    /*
@@ -77,59 +90,87 @@ var noteProcessor = (function(){
     * takes [wordsAfterIs]: an array of words from after the word "is"
     */
    function respondToHowMany(wordsAfterIs){
-      var amount = alienToDecimal(wordsAfterIs);
+      console.log(wordsAfterIs);
       var type = wordsAfterIs[wordsAfterIs.length - 1];
-      var credits = amount * charts.goods[type];
-      return wordsAfterIs.join(" ") + " is " + credits + " Credits" + "<br>";
+      var alienWords = wordsAfterIs.slice(); // clone array
+      alienWords.pop(); // remove the type from the array of words
+      console.log(alienWords);
+      var alienToDecimalResult = alienToDecimal(alienWords);
+      var message = "";
+      if(isNaN(alienToDecimalResult)){
+         message = alienToDecimalResult;
+      }else {
+         message = alienToDecimalResult * charts.goods[type] + " Credits";
+      }
+      return wordsAfterIs.join(" ") + " is " + message + "<br>";
    }
 
    /*
-    * returns a STRING which should be empty unless there is an error
+    * returns an INT containing the value of the good 
+    * OR a STRING containing an error message
     * takes [beforeIs]: a STRING of words from before the word "is"
     *       [wordsAfterIs]: an array of words from after the word "is"
     */
    function determineGoodsValue(beforeIs, wordsAfterIs){
       var wordsBeforeIs = utility.splitAndTrim(beforeIs, whiteSpaceRegex);
-      var type = beforeIs.match(capitalWordRegex);
-      var quantity = alienToDecimal(wordsBeforeIs);
-      if(wordsAfterIs.length == 2){
-         var value = wordsAfterIs[0];
-         charts.goods[type] = value/quantity;
-      } else {
-         return errorString;
+      var alienWords = wordsBeforeIs.slice(); // clone array
+      alienWords.pop(); // remove the type from the array of words
+      var quantity = alienToDecimal(alienWords);
+      console.log("quantity: " + quantity);
+      if(isNaN(quantity)){
+         return alienWords.join("") + " is " + quantity;
       }
-      return "";
+      if(wordsAfterIs.length == 2){
+         var price = wordsAfterIs[0];
+         console.log("PRICE: " + price);
+         return price/quantity;
+      } else {
+         return goodsValueErrorString;
+      }
    }
 
    /*
     * returns a STRING of roman numerals which equal the alien words
+    * OR a BOOLEAN false meaning the input was invalid
     * takes [words]: an ARRAY of words that should be keys within 
     * the object charts.alien
     */
    function alienToRoman(words){
+      if(words.length <= 0) return isBlankErrorString;
       var numerals = "";
-      words.forEach(word => {
+      for(var i = 0; i < words.length; i++){
+         var word = words[i];
          if(!charts.alien.hasOwnProperty(word)){
-            return numerals;
+            return alienToRomanErrorString;
          }
          numerals += charts.alien[word];
-      });
+      }
       return numerals;
    }
 
    /*
     * returns an INT equal to the input alien words
+    * OR a BOOLEAN false meaning the input was invalid
     * takes [words]: an ARRAY of alien words
     */
    function alienToDecimal(words){
-      return romanToDecimal(alienToRoman(words));
+      if(words.length <= 0) return isBlankErrorString;
+      var result = "";
+      var alienToRomanResult = alienToRoman(words);
+      if(alienToRomanResult === alienToRomanErrorString){
+         return alienToRomanResult;
+      } else return romanToDecimal(alienToRomanResult);
    }
 
    /*
     * returns an INT equal to the input roman numerals
+    * OR a STRING containing an invalid input error message
     * takes [numerals]: a STRING of roman numerals
     */
    function romanToDecimal(numerals){
+      if(!isValidRomanNumeralString(numerals)){
+         return romanToDecimalErrorString;
+      }
       var keys = Object.keys(charts.romanNumerals);
       var total = 0;
       while(numerals.length > 0){
@@ -141,6 +182,26 @@ var noteProcessor = (function(){
          });
       }
       return total;
+   }
+
+   function isValidRomanNumeralString(string){
+      if(string.length <= 0) return false;
+      var moreThanThreeDuplicatesInARowRegex = /(.)\1{3,}/
+      if(string.match(moreThanThreeDuplicatesInARowRegex)){
+         return false;
+      } 
+      for(var i = 0; i < string.length; i++){
+         if(!inChart("romanNumerals", string[i])){
+            return false;
+         }
+      }
+      return true;
+   }
+   function inChart(subchart, key){
+      if(charts[subchart].hasOwnProperty(key)){
+         return true;
+      }
+      return false;
    }
    /********** end private methods **********/
    
@@ -170,6 +231,18 @@ var noteProcessor = (function(){
    /* test-code */
    /* exporting private methods/vars for unit tests */
    api._charts = charts;
+   api._generalErrorString = generalErrorString;
+   api._isBlankErrorString = isBlankErrorString;
+   api._romanToDecimalErrorString = romanToDecimalErrorString;
+   api._alienToRomanErrorString = alienToRomanErrorString;
+
+   api._processLine = processLine;
+   api._respondToHowMuch = respondToHowMuch;
+   api._respondToHowMany = respondToHowMany;
+   api._determineGoodsValue = determineGoodsValue;
+   api._alienToDecimal = alienToDecimal;
+   api._alienToRoman = alienToRoman;
+   api._romanToDecimal = romanToDecimal;
    /* end-test-code */
 
    return api;
