@@ -6,6 +6,7 @@ var interface = (function(){
 
       fileInput.addEventListener('change', function(e){
          var file = fileInput.files[0];
+         document.getElementById("file-selector").value = "";
 
          loadFile(file).then(function(fileString){
             var result = noteProcessor.processNotes(fileString);
@@ -50,8 +51,8 @@ var interface = (function(){
             reader.onload = function(e) {
                resolve(reader.result);
             }
-
             reader.readAsText(file);
+            
          } else {
             reject();
          }

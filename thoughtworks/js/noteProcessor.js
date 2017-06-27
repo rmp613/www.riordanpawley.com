@@ -17,10 +17,10 @@ var noteProcessor = (function(){
    }
 
    var generalErrorString = "I have no idea what you are talking about <br>";
-   var alienToRomanErrorString = "a string containing words that cannot be understood";
-   var romanToDecimalErrorString = "a string containing an invalid roman numeral or an invalid roman numeral chain";
-   var alienChartErrorString = "each alien word must be equal to a single roman numeral e.g. pish is L";
-   var isBlankErrorString = "blank"
+   var alienToRomanErrorString = "a string containing words that cannot be understood <br>";
+   var romanToDecimalErrorString = "a string containing an invalid roman numeral or an invalid roman numeral chain <br>";
+   var alienChartErrorString = "each alien word must be equal to a single roman numeral e.g. pish is L <br>";
+   var isBlankErrorString = "blank<br>"
    var whiteSpaceRegex = /\s+/g;
    var capitalWordRegex = /[A-Z]\w+/g;
    /********** end private variables **********/
@@ -67,8 +67,6 @@ var noteProcessor = (function(){
             }   
          }
       }
-
-      
       
       return generalErrorString;
    }
@@ -79,7 +77,8 @@ var noteProcessor = (function(){
     */
    function respondToHowMuch(wordsAfterIs){
       var amount = alienToDecimal(wordsAfterIs);
-      return wordsAfterIs.join(" ") + " is " + amount + "<br>";
+      if(!isNaN(amount)) amount += "<br>";
+      return wordsAfterIs.join(" ") + " is " + amount;
    }
 
    /*
@@ -96,9 +95,9 @@ var noteProcessor = (function(){
       if(isNaN(alienToDecimalResult)){
          message = alienToDecimalResult;
       }else {
-         message = alienToDecimalResult * charts.goods[type] + " Credits";
+         message = alienToDecimalResult * charts.goods[type] + " Credits<br>";
       }
-      return wordsAfterIs.join(" ") + " is " + message + "<br>";
+      return wordsAfterIs.join(" ") + " is " + message;
    }
 
    /*
@@ -149,8 +148,10 @@ var noteProcessor = (function(){
     */
    function alienToDecimal(words){
       if(words.length <= 0) return isBlankErrorString;
+
       var result = "";
       var alienToRomanResult = alienToRoman(words);
+
       if(alienToRomanResult === alienToRomanErrorString){
          return alienToRomanResult;
       } else return romanToDecimal(alienToRomanResult);
@@ -166,14 +167,13 @@ var noteProcessor = (function(){
          return romanToDecimalErrorString;
       }
       var total = 0;
-      var previous, current, next;
+      var current, next;
 
       for(var i = 0; i < numerals.length; i++){
          current = charts.romanNumerals[numerals.charAt(i)];
-         previous = charts.romanNumerals[numerals.charAt(i-1)];
          next = charts.romanNumerals[numerals.charAt(i+1)];
          
-         if(current < next){
+         if(current < next){ 
             if(canBeSubtracted(current, next)){
                total += next - current;
                i++;
@@ -181,19 +181,14 @@ var noteProcessor = (function(){
                return romanToDecimalErrorString;
             }
          } else if(current === next) {
-            // oneAfterNext = charts.romanNumerals[numerals.charAt(i+2)];
-            // twoAfterNext = charts.romanNumerals[numerals.charAt(i+3)];
-            // if(next === oneAfterNext === twoAfterNext){
-            //    return romanToDecimalErrorString;
-            // } else {
-               while(current === next){
-                  total += current;
-                  i++;
-                  current = charts.romanNumerals[numerals.charAt(i)];
-                  next = charts.romanNumerals[numerals.charAt(i+1)];
-               }
-               if(current > next || next === undefined) total += current;
-            // }
+            while(current === next){
+               total += current;
+               i++;
+               current = charts.romanNumerals[numerals.charAt(i)];
+               next = charts.romanNumerals[numerals.charAt(i+1)];
+            }
+
+            if(current > next || next === undefined) total += current;
          } else { // current >= next
             total += current;
          }

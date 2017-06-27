@@ -1,12 +1,3 @@
-Notes:
-File API is fully supported by 70% of current browser market share with an additional 22.8% worth of partial support.
-FileReader API is fully supported by 88.7% of current browser market share with an additional 4.1% worth of partial support.
-To match the word "is" by itself and not match any words that include the letters "is" I used /(?:^|\b)(is)(?=\b|$)/.
-(?:^|\b) -> this part matches the start of the string or a word boundary
-(is) -> this part matches the word "is"
-(?=\b|$) -> this part matches the end of the string or a word boundary
-
-
 Assumptions:
    The structure of each line shown in the test input (except for the last line)
    shows how similar lines should be structured
@@ -21,6 +12,9 @@ Assumptions:
 Design:
    Testing: 
       I used QUnit (JQuery's testing suite) to test my code.
+      Tests are run on the test.html page.
+      Each module has its own test module inside the test directory with the
+      naming scheme modulename-spec.js
       To accomplish testing of private functions and variables I appended these
       to the api of each module with an underscore prefix to show that they are 
       intended to be private.
@@ -32,9 +26,19 @@ Design:
    
    Object Oriented: 
       I split my code up into 3 modules:
-         interface: handles interactions with the DOM and also the loading of 
-            the file.
+         interface: handles interactions with the DOM and the loading of the 
+            file.
          noteProcessor: processes the loaded file and returns responses for 
             each line in the input text file that requires them.
          utility: a collection of useful functions that could be used in many
             different modules.
+
+   File Input:
+      To avoid using external libraries to solve this problem I used a 
+      relatively new javascript API called FileReader. 
+      FileReader API is fully supported by 88.7% of current browser market share 
+      with an additional 4.1% worth of partial support.
+
+   Issues:
+      I had some issues with caching so if something isn't working correctly
+      try ctrl-f5 or cmd-shift-r or any other command that clears the cache.
