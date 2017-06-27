@@ -1,6 +1,5 @@
 QUnit.module("utility", function(){
-
-   QUnit.test("utility exists", function(assert){
+   QUnit.test("UNIT: utility exists", function(assert){
       assert.ok(utility);
    });
 
