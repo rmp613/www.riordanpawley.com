@@ -9,6 +9,10 @@ QUnit.module("noteProcessor", function(hooks){
       assert.ok(noteProcessor);
    });
 
+   QUnit.test("UNIT: noteProcessor exists", function(assert){
+      console.log(noteProcessor);
+   });
+
    QUnit.test("UNIT: processLine() returns an error message if the string is empty", function(assert){
       var result = noteProcessor._processLine("");
       var expectedResult = "I have no idea what you are talking about <br>";
