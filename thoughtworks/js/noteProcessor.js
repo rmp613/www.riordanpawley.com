@@ -225,14 +225,13 @@ var noteProcessor = (function(){
    /********** end public methods **********/
 
    var api = {
-      generalErrorString: generalErrorString,
       processNotes: processNotes
    }
 
    /* test-code */
    /* exporting private methods/vars for unit tests */
    api._charts = charts;
-   // api._generalErrorString = generalErrorString;
+   api._generalErrorString = generalErrorString;
    api._isBlankErrorString = isBlankErrorString;
    api._romanToDecimalErrorString = romanToDecimalErrorString;
    api._alienToRomanErrorString = alienToRomanErrorString;
