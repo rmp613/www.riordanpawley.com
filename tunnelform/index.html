@@ -1,13 +1,614 @@
-<html>
-   <head>
-   </head>
-   <body>
-      <form>
-         <label>Diameter:</label><br>
-         <input type='text' />
+<htnml>
 
-         <br>
-         <input type='submit' />
-      </form>
+   <head>
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+         crossorigin="anonymous">
+      <!--<link rel="stylesheet" href="./dropdowns-enhancement.css">-->
+      <link href="./style.css" rel="stylesheet">
+   </head>
+
+   <body>
+      <script type="text/javascript">
+         //set the date to today as default
+         Date.prototype.toDateInputValue = (function () {
+            var local = new Date(this);
+            local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+            return local.toJSON().slice(0, 10);
+         });
+         window.onload = function () {
+            var dateElements = document.getElementsByClassName('date-picker');
+            for (var i = 0; i < dateElements.length; i++) {
+               var ele = dateElements[i];
+               ele.value = new Date().toDateInputValue();
+            }
+         }
+      </script>
+
+      <div id="forms" class="container">
+         <ul class="nav nav-pills">
+            <li class="active">
+               <a href="#projectForm" data-toggle="tab">Project</a>
+            </li>
+            <li>
+               <a href="#tunnelDataForm" data-toggle="tab">Tunnel Data</a>
+            </li>
+            <li>
+               <a href="#standardBendsForm" data-toggle="tab">Standard Bends</a>
+            </li>
+            <li>
+               <a href="#specialBendsForm" data-toggle="tab">Special Bends</a>
+            </li>
+         </ul>
+
+         <div class="tab-content clearfix">
+            <div id="projectForm" class="tab-pane active">
+               <form class="col-sm-5">
+                  <div class="form-group">
+                     <label>Date:</label>
+                     <input class="date-picker form-control" type='date' />
+                  </div>
+                  <div class="form-group">
+                     <label>Project Name:</label>
+                     <input class="form-control" type='text' />
+                  </div>
+                  <div class="form-group">
+                     <label>Section:</label>
+                     <input class="form-control" type='text' />
+                  </div>
+                  <div class="form-group">
+                     <label>Customer:</label>
+                     <input class="form-control" type='text' />
+                  </div>
+                  <div class="form-group">
+                     <label>Customer Reference:</label>
+                     <input class="form-control" type='text' />
+                  </div>
+                  <div class="form-group">
+                     <label>Quotation Number:</label>
+                     <input class="form-control" type='text' />
+                  </div>
+
+                  <br>
+                  <button type="button" id="projectNext" class="btn-next btn btn-default">Next</button>
+
+               </form>
+
+            </div>
+            <div id="tunnelDataForm" class="tab-pane">
+               <form class="col-sm-4">
+                  <h2>Mainline</h2>
+
+                  <div title="The length of the ducting alone" class="form-group">
+                     <label>Length:</label>
+                     <label class="measurement">m</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Cross-sectional area:</label>
+                     <label class="measurement">m</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Max diesel loaders:</label>
+                     <label class="measurement">units</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Power of each diesel loader:</label>
+                     <label class="measurement">kW</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Max diesel trucks:</label>
+                     <label class="measurement">units</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Power of each diesel truck:</label>
+                     <label class="measurement">kW</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Max diesel locomotives:</label>
+                     <label class="measurement">units</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Power of each diesel locomotive:</label>
+                     <label class="measurement">kW</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Minimum required return air velocity:</label>
+                     <label class="measurement">m/s</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Air flow required per diesel motor kW:</label>
+                     <label class="measurement">m3/s/kW</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Minimum air temperature:</label>
+                     <label class="measurement">˚C</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Altitude:</label>
+                     <label class="measurement">m</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Max duct diameter:</label>
+                     <label class="measurement">m</label>
+                     <select class="form-control">
+                        <option>1</option>
+                        <option>etc</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label>Number of parallel 1st ducts:</label>
+                     <select class="form-control">
+                        <option>1</option>
+                        <option>etc</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label>Preferred ducting quality</label>
+                     <select class="form-control">
+                        <option>Titan FR-RSX</option>
+                        <option>etc</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label>Preferred lenght of each duct unit:</label>
+                     <label class="measurement">m</label>
+                     <select class="form-control">
+                        <option>10</option>
+                        <option>etc</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label>Anticipated leakage in the duct:</label>
+                     <select class="form-control">
+                        <option>Extremely low</option>
+                        <option>etc</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label>Straightness of duct:</label>
+                     <select class="form-control">
+                        <option>Absolutely Straight</option>
+                        <option>Small Deviations</option>
+                        <option>Average Straight</option>
+                        <option>Large Deviations</option>
+                        <option>Severe Straight</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label>Joint type:</label>
+                     <select class="form-control">
+                        <option>ZIP-joint</option>
+                        <option>Steel Clamp</option>
+                     </select>
+                  </div>
+
+                  <br>
+               </form>
+               <form class="col-sm-4">
+                  <h2>Access</h2>
+
+                  <div title="The length of the ducting alone" class="form-group">
+                     <label>Length:</label>
+                     <label class="measurement">m</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Cross-sectional area:</label>
+                     <label class="measurement">m</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Max diesel loaders:</label>
+                     <label class="measurement">units</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Power of each diesel loader:</label>
+                     <label class="measurement">kW</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Max diesel trucks:</label>
+                     <label class="measurement">units</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Power of each diesel truck:</label>
+                     <label class="measurement">kW</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Max diesel locomotives:</label>
+                     <label class="measurement">units</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Power of each diesel locomotive:</label>
+                     <label class="measurement">kW</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Minimum required return air velocity:</label>
+                     <label class="measurement">m/s</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Air flow required per diesel motor kW:</label>
+                     <label class="measurement">m3/s/kW</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Minimum air temperature:</label>
+                     <label class="measurement">˚C</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Altitude:</label>
+                     <label class="measurement">m</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Max duct diameter:</label>
+                     <label class="measurement">m</label>
+                     <select class="form-control">
+                        <option>1</option>
+                        <option>etc</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label>Number of parallel 1st ducts:</label>
+                     <select class="form-control">
+                        <option>1</option>
+                        <option>etc</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label>Preferred ducting quality</label>
+                     <select class="form-control">
+                        <option>Titan FR-RSX</option>
+                        <option>etc</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label>Preferred lenght of each duct unit:</label>
+                     <label class="measurement">m</label>
+                     <select class="form-control">
+                        <option>10</option>
+                        <option>etc</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label>Anticipated leakage in the duct:</label>
+                     <select class="form-control">
+                        <option>Extremely low</option>
+                        <option>etc</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label>Straightness of duct:</label>
+                     <select class="form-control">
+                        <option>Absolutely Straight</option>
+                        <option>Small Deviations</option>
+                        <option>Average Straight</option>
+                        <option>Large Deviations</option>
+                        <option>Severe Straight</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label>Joint type:</label>
+                     <select class="form-control">
+                        <option>ZIP-joint</option>
+                        <option>Steel Clamp</option>
+                     </select>
+                  </div>
+
+                  <br>
+               </form>
+               <form class="col-sm-4">
+                  <h2>Intake (suction)</h2>
+
+                  <div title="The length of the ducting alone" class="form-group">
+                     <label>Length:</label>
+                     <label class="measurement">m</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Cross-sectional area:</label>
+                     <label class="measurement">m</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Max diesel loaders:</label>
+                     <label class="measurement">units</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Power of each diesel loader:</label>
+                     <label class="measurement">kW</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Max diesel trucks:</label>
+                     <label class="measurement">units</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Power of each diesel truck:</label>
+                     <label class="measurement">kW</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Max diesel locomotives:</label>
+                     <label class="measurement">units</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Power of each diesel locomotive:</label>
+                     <label class="measurement">kW</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Minimum required return air velocity:</label>
+                     <label class="measurement">m/s</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Air flow required per diesel motor kW:</label>
+                     <label class="measurement">m3/s/kW</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Minimum air temperature:</label>
+                     <label class="measurement">˚C</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Altitude:</label>
+                     <label class="measurement">m</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Max duct diameter:</label>
+                     <label class="measurement">m</label>
+                     <select class="form-control">
+                        <option>1</option>
+                        <option>etc</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label>Number of parallel 1st ducts:</label>
+                     <select class="form-control">
+                        <option>1</option>
+                        <option>etc</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label>Preferred ducting quality</label>
+                     <select class="form-control">
+                        <option>Titan FR-RSX</option>
+                        <option>etc</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label>Preferred lenght of each duct unit:</label>
+                     <label class="measurement">m</label>
+                     <select class="form-control">
+                        <option>10</option>
+                        <option>etc</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label>Anticipated leakage in the duct:</label>
+                     <select class="form-control">
+                        <option>Extremely low</option>
+                        <option>etc</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label>Straightness of duct:</label>
+                     <select class="form-control">
+                        <option>Absolutely Straight</option>
+                        <option>Small Deviations</option>
+                        <option>Average Straight</option>
+                        <option>Large Deviations</option>
+                        <option>Severe Straight</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label>Joint type:</label>
+                     <select class="form-control">
+                        <option>ZIP-joint</option>
+                        <option>Steel Clamp</option>
+                     </select>
+                  </div>
+
+                  <br>
+               </form>
+            </div>
+            <div id="standardBendsForm" class="tab-pane">
+               <form class="col-sm-4">
+                  <h2>Mainline</h2>
+                  <h4>30˚ Bends: 0</h4>
+                  <h4>45˚ Bends: 0</h4>
+                  <h4>60˚ Bends: 0</h4>
+                  <h4>90˚ Bends: 0</h4>
+
+                  <div class="form-group">
+                     <label>Distance from start of section:</label>
+                     <label class="measurement">m</label>
+                     <input class="form-control" style="width:180px;display:inline;" type="number">
+                     <div class="form-group input-container btn-group bend-adder">
+                        <button class="btn btn-default glyphicon-plus plus-button"></button>
+                        <button data-toggle="dropdown" data-placeholder="false" class="btn btn-default dropdown-toggle">30˚
+                              <span class="caret"></span>
+                           </button>
+                        <ul class="dropdown-menu" role="menu">
+                           <li> <a class="dropdown-item" href="#">30˚</a></li>
+                           <li> <a class="dropdown-item" href="#">45˚</a></li>
+                           <li><a class="dropdown-item" href="#">60˚</a></li>
+                           <li> <a class="dropdown-item" href="#">90˚</a></li>
+                     </div>
+                  </div>
+
+                  <br>
+                  <br>
+                  <button id="projectNext" class="btn-next btn btn-default">Next</button>
+               </form>
+               <form class="col-sm-4">
+                  <h2>Access</h2>
+                  <h4>30˚ Bends: 0</h4>
+                  <h4>45˚ Bends: 0</h4>
+                  <h4>60˚ Bends: 0</h4>
+                  <h4>90˚ Bends: 0</h4>
+
+                  <div class="form-group">
+                     <label>Distance from start of section:</label>
+                     <label class="measurement">m</label>
+                     <input class="form-control" style="width:180px;display:inline;" type="number">
+                     <div class="form-group input-container btn-group bend-adder">
+                        <button class="btn btn-default glyphicon-plus plus-button"></button>
+                        <button data-toggle="dropdown" data-placeholder="false" class="btn btn-default dropdown-toggle">30˚
+                              <span class="caret"></span>
+                           </button>
+                        <ul class="dropdown-menu" role="menu">
+                           <li> <a class="dropdown-item" href="#">30˚</a></li>
+                           <li> <a class="dropdown-item" href="#">45˚</a></li>
+                           <li><a class="dropdown-item" href="#">60˚</a></li>
+                           <li> <a class="dropdown-item" href="#">90˚</a></li>
+                     </div>
+                  </div>
+
+                  <br>
+                  <br>
+                  <button id="projectNext" class="btn-next btn btn-default">Next</button>
+               </form><form class="col-sm-4">
+                  <h2>Intake (Suction)</h2>
+                  <h4>30˚ Bends: 0</h4>
+                  <h4>45˚ Bends: 0</h4>
+                  <h4>60˚ Bends: 0</h4>
+                  <h4>90˚ Bends: 0</h4>
+
+                  <div class="form-group">
+                     <label>Distance from start of section:</label>
+                     <label class="measurement">m</label>
+                     <input class="form-control" style="width:180px;display:inline;" type="number">
+                     <div class="form-group input-container btn-group bend-adder">
+                        <button class="btn btn-default glyphicon-plus plus-button"></button>
+                        <button data-toggle="dropdown" data-placeholder="false" class="btn btn-default dropdown-toggle">30˚
+                              <span class="caret"></span>
+                           </button>
+                        <ul class="dropdown-menu" role="menu">
+                           <li> <a class="dropdown-item" href="#">30˚</a></li>
+                           <li> <a class="dropdown-item" href="#">45˚</a></li>
+                           <li><a class="dropdown-item" href="#">60˚</a></li>
+                           <li> <a class="dropdown-item" href="#">90˚</a></li>
+                     </div>
+                  </div>
+
+                  <br>
+                  <br>
+                  <button id="projectNext" class="btn-next btn btn-default">Next</button>
+               </form>
+            </div>
+            <div id="specialBendsForm" class="tab-pane">
+               <form class="col-sm-4">
+                  <h2>Mainline</h2>
+                  <div class="form-group">
+                     <label>Distance from start of section:</label>
+                     <label class="measurement">m</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Bend radius:</label>
+                     <label class="measurement">rm</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Bend angle:</label>
+                     <label class="measurement">˚</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <button class="col-sm-2 btn btn-default glyphicon-plus plus-button"></button>
+               </form>
+               <form class="col-sm-4">
+                  <h2>Access</h2>
+                  <div class="form-group">
+                     <label>Distance from start of section:</label>
+                     <label class="measurement">m</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Bend radius:</label>
+                     <label class="measurement">rm</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Bend angle:</label>
+                     <label class="measurement">˚</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <button class="col-sm-2 btn btn-default glyphicon-plus plus-button"></button>
+               </form>
+               <form class="col-sm-4">
+                  <h2>Intake (suction)</h2>
+                  <div class="form-group">
+                     <label>Distance from start of section:</label>
+                     <label class="measurement">m</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Bend radius:</label>
+                     <label class="measurement">rm</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <div class="form-group">
+                     <label>Bend angle:</label>
+                     <label class="measurement">˚</label>
+                     <input class="form-control" type='number' />
+                  </div>
+                  <button class="col-sm-2 btn btn-default glyphicon-plus plus-button"></button>
+               </form>
+            </div>
+
+
+            <!-- Bootstrap core JavaScript
+    ================================================== -->
+            <!-- Placed at the end of the document so the pages load faster -->
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+               crossorigin="anonymous"></script>
+
+            <!--<script src="./dropdowns-enhancement.js" type="text/javascript"></script>-->
+            <script type="text/javascript">
+               //setupt next buttons to switch tabs
+
+               $('.btn-next').click(function () {
+                  $('.nav-pills li.active').next('li').find('a').trigger('click');
+                  window.scrollTo(0, 0);
+               });
+
+               //enable tooltips:
+               $(document).ready(function () {
+                  $('[data-toggle="tooltip"]').tooltip();
+
+                  $(".dropdown-menu").on('click', 'li a', function () {
+                     $(".btn:first-child").next().html($(this).text() + " <span class='caret'></span>");
+                     $(".btn:first-child").next().val($(this).text());
+                  });
+               });
+            </script>
    </body>
-</html>
+
+   </html>
