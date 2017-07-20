@@ -1,0 +1,59 @@
+body {
+  padding : 10px ;
+  
+}
+
+#forms .tab-content {
+  color : white;
+  background-color: #428bca;
+  padding : 5px 15px;
+}
+
+form {
+   border-right: 1px solid white;
+   border-left: 1px solid white;
+}
+.bend-adder {
+   float:right;
+}
+
+.my-form-control {
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+
+
+
+.plus {
+   font-size:15px;
+}
+.delete-bend:hover {
+   cursor:default;
+   -webkit-transform:scale(1.3);
+   -ms-transform:scale(1.3);
+   transform:scale(1.3);
+   color:red;
+}
+.plus-btn {
+}
+.measurement {
+   float:right;
+}
+/* remove border radius for the tab */
+
+#forms .nav-pills > li > a {
+  border-radius: 0;
+}
